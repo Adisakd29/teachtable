@@ -1,0 +1,10 @@
+{
+  "name": "electronics-timetable",
+  "version": "1.0.0",
+  "description": "ระบบจัดตารางเรียน ตารางสอน ตารางการใช้ห้อง แผนกอิเล็กทรอนิกส์",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED",
+  "private": true
+}

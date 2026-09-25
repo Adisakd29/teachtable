@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<title>ตารางสอนแผนกอิเล็กทรอนิกส์</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --sunk:#E8EDEA; --ink:#15211C; --muted:#5A6B63; --line:#D3DDD8;
+  --accent:#0E6B4F; --accent-ink:#FFFFFF; --accent-soft:#D6EDE3;
+  --copper:#B06A1F; --copper-soft:#F6E6D2;
+  --bad:#B8332F; --bad-soft:#F8DEDC; --warn:#9A6B00; --warn-soft:#FAEFCF;
+  --blk-l:93%; --blk-c:0.045; --blk-ink:#1B2621;
+  --shadow:0 1px 2px rgba(20,40,30,.08),0 4px 16px rgba(20,40,30,.06);
+  --f-display:"Chakra Petch","IBM Plex Sans Thai",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0E1512; --surface:#151F1B; --sunk:#1B2823; --ink:#E3ECE7; --muted:#93A59C; --line:#2A3A33;
+    --accent:#3FBF8C; --accent-ink:#06140E; --accent-soft:#16372A;
+    --copper:#E3A35C; --copper-soft:#3A2A17;
+    --bad:#F07A74; --bad-soft:#3D1D1B; --warn:#E8C064; --warn-soft:#3A3016;
+    --blk-l:31%; --blk-c:0.05; --blk-ink:#EAF2EE;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0E1512; --surface:#151F1B; --sunk:#1B2823; --ink:#E3ECE7; --muted:#93A59C; --line:#2A3A33;
+  --accent:#3FBF8C; --accent-ink:#06140E; --accent-soft:#16372A;
+  --copper:#E3A35C; --copper-soft:#3A2A17;
+  --bad:#F07A74; --bad-soft:#3D1D1B; --warn:#E8C064; --warn-soft:#3A3016;
+  --blk-l:31%; --blk-c:0.05; --blk-ink:#EAF2EE;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);padding-inline:16px;padding-block:0 40px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* header */
+.top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 24px;padding-block:20px 12px;max-width:1500px;margin:0 auto}
+.brand{display:flex;gap:12px;align-items:center;min-width:0}
+.mark{width:40px;height:40px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center}
+.brand h1{font-size:22px;line-height:1.15}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.tabs{display:flex;gap:4px;margin-left:auto;background:var(--sunk);padding:4px;border-radius:10px;flex-wrap:wrap}
+.tabs button{border:0;background:transparent;padding:7px 14px;border-radius:7px;font-weight:500;color:var(--muted)}
+.tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+main{max-width:1500px;margin:0 auto}
+.status{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);padding-bottom:10px;max-width:1500px;margin:0 auto}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.dot.on{background:var(--accent)}
+
+/* board */
+.board{display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;align-items:start}
+@media (max-width:900px){.board{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--sunk);padding:3px;border-radius:8px}
+.seg button{border:0;background:transparent;padding:6px 4px;border-radius:6px;font-size:13px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--shadow)}
+select,input[type=text],input[type=number]{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:6px 9px;width:100%;min-width:0}
+.meter{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.bar{height:6px;border-radius:3px;background:var(--sunk);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent)}
+.clist{display:flex;flex-direction:column;gap:6px;max-height:62vh;overflow:auto;margin-inline:-4px;padding-inline:4px}
+@media (max-width:900px){.clist{max-height:none}}
+.crow{border:1px solid var(--line);border-radius:9px;padding:8px 10px;display:grid;gap:4px;border-left:4px solid oklch(62% 0.12 var(--h))}
+.crow.done{opacity:.6}
+.crow .nm{font-weight:600;font-size:13px;line-height:1.35}
+.crow .sub{font-size:12px;color:var(--muted)}
+.chips{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.chip{border:1px dashed var(--copper);background:var(--copper-soft);color:var(--ink);border-radius:6px;padding:1px 9px;font-size:12px;font-family:var(--f-mono)}
+.chip[aria-pressed="true"]{background:var(--copper);color:var(--surface);border-style:solid}
+.tag{font-size:11px;padding:0 6px;border-radius:4px;background:var(--sunk);color:var(--muted)}
+.tag.bad{background:var(--bad-soft);color:var(--bad)}
+.tag.ok{background:var(--accent-soft);color:var(--accent)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+
+.gridwrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.ghead{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
+.ghead h2{font-size:20px}
+.ghead .meta{color:var(--muted);font-size:13px}
+.tools{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-weight:500;font-size:13px}
+.btn:hover{border-color:var(--accent)}
+.btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.danger{color:var(--bad)}
+.btn:disabled{opacity:.5;cursor:default}
+.pickbar{display:flex;gap:10px;align-items:center;background:var(--copper-soft);border:1px solid var(--copper);border-radius:8px;padding:6px 10px;font-size:13px;flex-wrap:wrap}
+.scroll{overflow-x:auto}
+.tt{display:grid;grid-template-columns:72px repeat(3,minmax(76px,1fr)) 30px repeat(8,minmax(76px,1fr));grid-auto-rows:auto;min-width:1000px;position:relative}
+.tt .h{font-size:11px;color:var(--muted);text-align:center;padding:4px 2px;border-bottom:1px solid var(--line)}
+.tt .h b{display:block;font-family:var(--f-display);font-size:13px;color:var(--ink)}
+.tt .h.eve b{color:var(--muted)}
+.tt .day{font-family:var(--f-display);font-weight:600;display:flex;align-items:center;padding-left:4px;border-bottom:1px solid var(--line);min-height:78px}
+.tt .cell{border-bottom:1px solid var(--line);border-left:1px solid var(--line);min-height:78px;background:transparent;border-top:0;border-right:0;padding:0;position:relative}
+.tt .cell.eve{background:repeating-linear-gradient(135deg,transparent 0 6px,var(--sunk) 6px 7px)}
+.tt .cell.ok{background:var(--accent-soft);box-shadow:inset 0 0 0 1.5px var(--accent);cursor:copy}
+.tt .cell.no{cursor:not-allowed}
+.tt .cell.drop{background:var(--accent);opacity:.5}
+.tt .lunch{grid-column:5;border-left:1px solid var(--line);background:var(--sunk);writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);letter-spacing:.1em}
+.blk{margin:3px;border-radius:7px;padding:5px 8px;background:oklch(var(--blk-l) var(--blk-c) var(--h));color:var(--blk-ink);border:1px solid oklch(60% 0.08 var(--h) / .5);font-size:12px;line-height:1.3;text-align:left;display:flex;flex-direction:column;gap:1px;overflow:hidden;z-index:1;position:relative}
+.blk .n{font-weight:600;font-size:12.5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.blk .s{opacity:.8;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.blk.bad{border:2px solid var(--bad)}
+.blk.sel{outline:2px solid var(--copper);outline-offset:1px}
+.blk .lk{font-size:10.5px;opacity:.75;order:9}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+
+/* check + data */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.stat b{display:block;font-family:var(--f-display);font-size:26px;line-height:1.1}
+.stat span{font-size:12px;color:var(--muted)}
+.stat.bad b{color:var(--bad)}
+.stat.good b{color:var(--accent)}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.sec h3{font-size:16px}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:12px;color:var(--muted);font-weight:500;white-space:nowrap}
+td input,td select{padding:4px 6px}
+.subtabs{display:flex;gap:6px;flex-wrap:wrap}
+.subtabs button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px}
+.subtabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.muted{color:var(--muted)}
+.empty{padding:40px 16px;text-align:center;color:var(--muted)}
+
+/* modal + toast */
+.scrim{position:fixed;inset:0;background:rgba(10,20,15,.45);display:grid;place-items:center;z-index:50;padding:16px}
+.modal{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);width:min(520px,100%);max-height:88vh;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--line)}
+.modal h3{font-size:18px}
+.kv{display:grid;grid-template-columns:90px 1fr;gap:6px 10px;font-size:13px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px 10px;font-size:13px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:9px;z-index:60;font-size:13px;max-width:calc(100% - 32px)}
+@media (prefers-reduced-motion:no-preference){.blk,.cell{transition:background .12s}}
+</style>
+
+<script src="claude-shim.js"></script>
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-ink)" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="1.5"/><path d="M9 6V3M12 6V3M15 6V3M9 21v-3M12 21v-3M15 21v-3M6 9H3M6 12H3M6 15H3M21 9h-3M21 12h-3M21 15h-3"/></svg></div>
+    <div><h1 id="appTitle">ตารางสอน แผนกอิเล็กทรอนิกส์</h1><p id="appSub">กำลังโหลด…</p></div>
+  </div>
+  <nav class="tabs" id="tabs"></nav>
+</header>
+<div class="status"><span class="dot" id="dot"></span><span id="statusText">กำลังเชื่อมต่อข้อมูลกลาง…</span></div>
+<main id="main"><div class="empty">กำลังโหลดข้อมูล…</div></main>
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+
+<script>
+(() => {
+const DAYS = ['จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์'];
+const TIMES = {1:'08.30–09.30',2:'09.30–10.30',3:'10.30–11.30',4:'12.30–13.30',5:'13.30–14.30',6:'14.30–15.30',7:'15.30–16.30',8:'16.30–17.30',9:'17.30–18.30',10:'18.30–19.30',11:'19.30–20.30'};
+const NP = 11;
+const DEPT_KIND = 'แผนกอิเล็กทรอนิกส์';
+
+const S = {
+  master: null, plan: {slots:{}}, loaded: {m:false,p:false}, db: null, dl: null, online: false,
+  tab: 'board', mode: 'group', sel: {group:'', teacher:'', room:''},
+  pick: null, focus: null, modal: null, dataTab: 'courses', pendingRender: false, busy: false, filter: '', exists: {master:false, plan:false}
+};
+try { const saved = JSON.parse(localStorage.getItem('tt-ui') || '{}'); Object.assign(S.sel, saved.sel || {}); if (saved.mode) S.mode = saved.mode; if (saved.tab) S.tab = saved.tab; } catch(e) {}
+function saveUi(){ try { localStorage.setItem('tt-ui', JSON.stringify({sel:S.sel, mode:S.mode, tab:S.tab})); } catch(e) {} }
+
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const live = o => Object.entries(o || {}).filter(([k,v]) => v && typeof v === 'object');
+const M = () => S.master;
+const courses = () => live(M().courses);
+const slots = () => live(S.plan.slots).filter(([id,s]) => M().courses[s.course] && M().courses[s.course] !== null);
+const subj = c => (M().subjects[c.subject]) || {name:'(ไม่พบวิชา)', code:'', t:0, p:0, c:0};
+const tName = id => (M().teachers[id] && M().teachers[id].short) || '';
+const gName = id => (M().groups[id] && M().groups[id].name) || '?';
+const rName = id => (M().rooms[id] && M().rooms[id].name) || '';
+const gNames = c => (c.groups || []).map(gName).join(', ');
+const hue = str => { let h = 2166136261; for (const ch of String(str)) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; } return Math.round((h % 1000) * 137.508) % 360; };
+const sortBy = (arr, f) => arr.slice().sort((a,b) => { const x=f(a), y=f(b); return x < y ? -1 : x > y ? 1 : 0; });
+const crossesLunch = (st, len) => st <= 3 && st + len - 1 >= 4;
+const uid = p => p + Date.now().toString(36) + Math.random().toString(36).slice(2,6);
+const patternOf = c => String(c.pattern || c.hours || '').split('+').map(x => parseInt(x,10)).filter(x => x > 0);
+const deptRooms = () => sortBy(live(M().rooms).filter(([id,r]) => r.kind === DEPT_KIND), ([id,r]) => r.name);
+const settings = () => M().settings || {};
+const sortedGroups = () => sortBy(live(M().groups), ([id,g]) => String(g.order ?? 999).padStart(4,"0") + g.name);
+const sortedTeachers = () => sortBy(live(M().teachers), ([id,t]) => t.short || t.name);
+
+function toast(msg){ const r = $('#toastRoot'); r.innerHTML = `<div class="toast" role="status">${esc(msg)}</div>`; clearTimeout(toast.t); toast.t = setTimeout(() => r.innerHTML = '', 3200); }
+
+function courseSlots(cid){ return slots().filter(([id,s]) => s.course === cid); }
+function remaining(cid){
+  const c = M().courses[cid]; const placed = courseSlots(cid).map(([id,s]) => s.len);
+  const sum = placed.reduce((a,b) => a+b, 0); const rem = (c.hours || 0) - sum;
+  if (rem <= 0) return [];
+  const pat = patternOf(c); const left = pat.slice();
+  for (const l of placed) { const i = left.indexOf(l); if (i >= 0) left.splice(i,1); }
+  const tot = left.reduce((a,b) => a+b, 0);
+  return tot === rem ? left : [rem];
+}
+
+/* ---------- occupancy & conflicts ---------- */
+function slotKeys(s){
+  const c = M().courses[s.course]; if (!c) return [];
+  const ks = [];
+  for (let p = s.start; p < s.start + s.len; p++) {
+    const t = `${s.day}:${p}`;
+    if (c.teacher) ks.push(`T|${c.teacher}|${t}`);
+    for (const g of c.groups || []) ks.push(`G|${g}|${t}`);
+    if (s.room && M().rooms[s.room] && !M().rooms[s.room].shared) ks.push(`R|${s.room}|${t}`);
+  }
+  return ks;
+}
+function buildOcc(list){
+  const occ = new Map();
+  for (const [id,s] of (list || slots())) for (const k of slotKeys(s)) { if (!occ.has(k)) occ.set(k, []); occ.get(k).push(id); }
+  return occ;
+}
+function conflicts(cand, ignore, occ){
+  const out = []; const c = M().courses[cand.course];
+  if (cand.start < 1 || cand.start + cand.len - 1 > NP) return ['เกินช่วงคาบที่มี'];
+  if (crossesLunch(cand.start, cand.len)) return ['คร่อมเวลาพักกลางวัน'];
+  const seen = new Set();
+  for (const k of slotKeys(cand)) {
+    const others = (occ.get(k) || []).filter(x => x !== ignore);
+    for (const o of others) {
+      const kind = k[0]; const key = kind + o; if (seen.has(key)) continue; seen.add(key);
+      const os = S.plan.slots[o]; const oc = M().courses[os.course]; const on = subj(oc).name;
+      if (kind === 'T') out.push(`${tName(c.teacher)} สอน "${on}" (${gNames(oc)}) อยู่แล้ว`);
+      else if (kind === 'G') out.push(`กลุ่ม ${gName(k.split('|')[1])} เรียน "${on}" อยู่แล้ว`);
+      else out.push(`ห้อง ${rName(cand.room)} ถูกใช้โดย "${on}"`);
+    }
+  }
+  return out;
+}
+function roomFree(room, day, start, len, ignore, occ){
+  if (!room) return true; const r = M().rooms[room]; if (!r || r.shared) return true;
+  for (let p = start; p < start + len; p++) if ((occ.get(`R|${room}|${day}:${p}`) || []).some(x => x !== ignore)) return false;
+  return true;
+}
+function chooseRoom(c, day, start, len, ignore, occ){
+  if (c.roomMode === 'none') return c.room || '';
+  const cands = [c.room, ...deptRooms().map(([id]) => id)].filter(Boolean);
+  for (const r of cands) if (roomFree(r, day, start, len, ignore, occ)) return r;
+  return '';
+}
+
+/* ---------- writes ---------- */
+let chain = Promise.resolve();
+function deepMerge(t, p){ for (const [k,v] of Object.entries(p)) { if (v && typeof v === 'object' && !Array.isArray(v) && t[k] && typeof t[k] === 'object') deepMerge(t[k], v); else t[k] = v; } }
+function write(doc, patch){
+  deepMerge(doc === 'plan' ? S.plan : S.master, JSON.parse(JSON.stringify(patch)));
+  render();
+  if (!S.db) { toast('ยังไม่ได้เชื่อมต่อข้อมูลกลาง การแก้ไขนี้จะไม่ถูกบันทึก'); return; }
+  const ref = S.db.doc('tt/' + doc);
+  chain = chain.then(() => S.exists[doc] ? ref.update(patch) : ref.set(JSON.parse(JSON.stringify(doc === 'plan' ? S.plan : S.master))).then(() => { S.exists[doc] = true; })).catch(e => {
+    if (e && e.code === 'invalid_argument') toast('บันทึกไม่ได้ อาจไม่มีสิทธิ์แก้ไข (ต้องเป็นผู้ร่วมแก้ไข)');
+    else toast('บันทึกไม่สำเร็จ ลองอีกครั้ง (' + (e && e.code || 'error') + ')');
+  });
+}
+const setSlot = (id, v) => write('plan', {slots: {[id]: v}});
+const setM = (path, v) => { const o = {}; let cur = o; path.forEach((k,i) => { if (i === path.length - 1) cur[k] = v; else cur = cur[k] = {}; }); write('master', o); };
+
+/* ---------- placement ---------- */
+function placeCourse(cid, len, day, start){
+  const occ = buildOcc(); const c = M().courses[cid];
+  const room = chooseRoom(c, day, start, len, null, occ);
+  const cand = {course: cid, day, start, len, room};
+  const errs = conflicts(cand, null, occ);
+  if (errs.length) { toast(errs[0]); return false; }
+  setSlot(uid('s'), {...cand, locked: false});
+  if (c.roomMode !== 'none' && !room) toast('วางแล้ว แต่ไม่มีห้องแผนกว่างในช่วงนี้');
+  return true;
+}
+function moveSlot(sid, day, start){
+  const s = S.plan.slots[sid]; const occ = buildOcc(); const c = M().courses[s.course];
+  let room = s.room;
+  if (!roomFree(room, day, start, s.len, sid, occ)) room = chooseRoom(c, day, start, s.len, sid, occ);
+  const cand = {...s, day, start, room};
+  const errs = conflicts(cand, sid, occ);
+  if (errs.length) { toast(errs[0]); return false; }
+  setSlot(sid, {day, start, room});
+  return true;
+}
+function candidateStatus(day, start){
+  if (!S.pick) return null;
+  const occ = S._occ;
+  if (S.pick.slot) { const s = S.plan.slots[S.pick.slot]; if (!s) return null; const c = M().courses[s.course];
+    let room = s.room; if (!roomFree(room, day, start, s.len, S.pick.slot, occ)) room = chooseRoom(c, day, start, s.len, S.pick.slot, occ);
+    return conflicts({...s, day, start, room}, S.pick.slot, occ); }
+  const c = M().courses[S.pick.course];
+  const room = chooseRoom(c, day, start, S.pick.len, null, occ);
+  return conflicts({course:S.pick.course, day, start, len:S.pick.len, room}, null, occ);
+}
+
+/* ---------- auto scheduler ---------- */
+function autoSchedule(scopeCids){
+  const st = settings(); const maxP = Math.min(NP, st.autoMaxPeriod || 8);
+  const base = slots();
+  const tasks = [];
+  for (const cid of scopeCids) { const c = M().courses[cid]; if (!c || c.activity) continue; for (const len of remaining(cid)) tasks.push({cid, len}); }
+  if (!tasks.length) return {placed: [], failed: []};
+  const tLoad = {}; for (const [cid,c] of courses()) if (c.teacher) tLoad[c.teacher] = (tLoad[c.teacher] || 0) + (c.hours || 0);
+  const diff = t => { const c = M().courses[t.cid]; return t.len * 10 + (c.groups || []).length * 6 + (tLoad[c.teacher] || 0) * 0.5 + (c.roomMode === 'dept' ? 4 : 0); };
+  let best = null;
+  const ATT = 40;
+  for (let a = 0; a < ATT; a++) {
+    const list = base.map(([id,s]) => [id, s]);
+    const occ = buildOcc(list);
+    const dayLoad = {}; // G|g|day -> hours
+    const courseDays = {}; // cid -> Set
+    for (const [id,s] of list) { const c = M().courses[s.course]; for (const g of c.groups || []) dayLoad[`${g}|${s.day}`] = (dayLoad[`${g}|${s.day}`] || 0) + s.len; (courseDays[s.course] ||= new Set()).add(s.day); }
+    const order = tasks.map(t => ({...t, k: diff(t) + (a ? Math.random() * 14 : 0)})).sort((x,y) => y.k - x.k);
+    const placed = [], failed = [];
+    for (let qi = 0; qi < order.length; qi++) {
+      const t = order[qi];
+      const c = M().courses[t.cid]; let bestC = null;
+      for (let d = 0; d < 5; d++) for (let p = 1; p + t.len - 1 <= maxP; p++) {
+        if (crossesLunch(p, t.len)) continue;
+        const room = chooseRoom(c, d, p, t.len, null, occ);
+        if (c.roomMode === 'dept' && !room) continue;
+        const cand = {course: t.cid, day: d, start: p, len: t.len, room};
+        let clash = false; for (const k of slotKeys(cand)) if (occ.has(k)) { clash = true; break; }
+        if (clash) continue;
+        let score = Math.random() * (a ? 3 : 0.5);
+        if (courseDays[t.cid] && courseDays[t.cid].has(d)) score += 30;
+        for (const g of c.groups || []) { const L = (dayLoad[`${g}|${d}`] || 0) + t.len; if (L > (st.maxPerDay || 7)) score += (L - (st.maxPerDay || 7)) * 12; score += L * 0.6; }
+        score += (p + t.len - 1 > 7 ? 8 : 0) + p * 0.3;
+        if (p === 1 || p === 4) score -= 2;
+        if (c.room && room !== c.room) score += 3;
+        if (!bestC || score < bestC.score) bestC = {score, cand};
+      }
+      if (!bestC) {
+        if (t.len >= 4 && !t.split) { const h1 = Math.ceil(t.len / 2); order.push({cid: t.cid, len: h1, split: true}, {cid: t.cid, len: t.len - h1, split: true}); }
+        else failed.push(t);
+        continue;
+      }
+      const id = uid('s'); const s = {...bestC.cand, locked: false};
+      list.push([id, s]); placed.push([id, s]);
+      for (const k of slotKeys(s)) { if (!occ.has(k)) occ.set(k, []); occ.get(k).push(id); }
+      for (const g of c.groups || []) dayLoad[`${g}|${s.day}`] = (dayLoad[`${g}|${s.day}`] || 0) + s.len;
+      (courseDays[t.cid] ||= new Set()).add(s.day);
+    }
+    const failH = failed.reduce((x,t) => x + t.len, 0);
+    if (!best || failH < best.failH) best = {placed, failed, failH};
+    if (!failH) break;
+  }
+  return best;
+}
+function runAuto(scope){
+  const cids = scope === 'view' ? viewCourses().map(([id]) => id) : courses().map(([id]) => id);
+  S.busy = true; render();
+  setTimeout(() => {
+    const r = autoSchedule(cids); S.busy = false;
+    if (!r.placed.length && !r.failed.length) { render(); toast('ทุกวิชาถูกจัดครบแล้ว'); return; }
+    const patch = {}; for (const [id,s] of r.placed) patch[id] = s;
+    if (r.placed.length) write('plan', {slots: patch}); else render();
+    const fh = r.failed.reduce((x,t) => x + t.len, 0);
+    toast(`จัดเพิ่ม ${r.placed.reduce((x,[i,s]) => x + s.len, 0)} ชม.` + (fh ? ` · วางไม่ได้ ${fh} ชม. (ดูแท็บตรวจสอบ)` : ' · ครบทุกวิชา'));
+  }, 30);
+}
+
+/* ---------- view data ---------- */
+function viewCourses(){
+  const id = S.sel[S.mode]; if (!id) return [];
+  if (S.mode === 'group') return courses().filter(([cid,c]) => (c.groups || []).includes(id));
+  if (S.mode === 'teacher') return courses().filter(([cid,c]) => c.teacher === id);
+  const ids = new Set(slots().filter(([sid,s]) => s.room === id).map(([sid,s]) => s.course));
+  return courses().filter(([cid,c]) => c.room === id || ids.has(cid));
+}
+function viewSlots(){
+  const id = S.sel[S.mode]; if (!id) return [];
+  return slots().filter(([sid,s]) => { const c = M().courses[s.course];
+    if (S.mode === 'group') return (c.groups || []).includes(id);
+    if (S.mode === 'teacher') return c.teacher === id;
+    return s.room === id; });
+}
+function entityOptions(mode){
+  if (mode === 'group') return sortedGroups().map(([id,g]) => [id, g.name, g.level]);
+  if (mode === 'teacher') return sortedTeachers().map(([id,t]) => [id, t.short + ' · ' + t.name, '']);
+  return sortBy(live(M().rooms), ([id,r]) => r.name).map(([id,r]) => [id, r.name, r.kind]);
+}
+function allConflicts(){
+  const occ = buildOcc(); const res = new Map();
+  for (const [k, ids] of occ) if (ids.length > 1) for (const id of ids) { if (!res.has(id)) res.set(id, new Set()); res.get(id).add(k[0]); }
+  return res;
+}
+
+/* ---------- render ---------- */
+function render(){
+  const ae = document.activeElement;
+  if ((S.tab === 'data' || S.tab === 'settings') && ae && ae.matches && ae.matches('#main input, #main select') ) { S.pendingRender = true; return; }
+  S.pendingRender = false;
+  $('#tabs').innerHTML = [['board','จัดตาราง'],['check','ตรวจสอบ'],['data','ข้อมูลรายวิชา'],['settings','ตั้งค่า / ส่งออก']]
+    .map(([k,l]) => `<button data-act="tab" data-v="${k}" aria-pressed="${S.tab===k}">${l}</button>`).join('');
+  $('#dot').className = 'dot' + (S.online ? ' on' : '');
+  $('#statusText').textContent = S.online ? 'ออนไลน์ · ทุกคนที่เปิดหน้านี้เห็นการแก้ไขทันที' : (S.dbTried ? 'ออฟไลน์ · เปิดดูได้แต่การแก้ไขจะไม่ถูกบันทึก' : 'กำลังเชื่อมต่อข้อมูลกลาง…');
+  if (!M()) { $('#main').innerHTML = `<div class="empty">${S.loaded.m ? 'ยังไม่มีข้อมูลตั้งต้นในระบบ' : 'กำลังโหลดข้อมูล…'}</div>`; renderModal(); return; }
+  const st = settings();
+  $('#appSub').textContent = `${st.school || ''} · ${st.term || ''}`;
+  if (S.tab === 'board') renderBoard();
+  else if (S.tab === 'check') renderCheck();
+  else if (S.tab === 'data') renderData();
+  else renderSettings();
+  renderModal();
+}
+
+function renderBoard(){
+  const opts = entityOptions(S.mode);
+  if (!S.sel[S.mode] || !opts.some(o => o[0] === S.sel[S.mode])) S.sel[S.mode] = opts[0] ? opts[0][0] : '';
+  const id = S.sel[S.mode];
+  S._occ = buildOcc();
+  const vc = sortBy(viewCourses(), ([cid,c]) => (remaining(cid).length ? 0 : 1) + subj(c).code);
+  const vs = viewSlots();
+  const bad = allConflicts();
+  const need = vc.reduce((a,[cid,c]) => a + (c.hours || 0), 0);
+  const have = S.mode === 'room' ? vs.reduce((a,[i,s]) => a + s.len, 0) : vc.reduce((a,[cid]) => a + courseSlots(cid).reduce((x,[i,s]) => x + s.len, 0), 0);
+  const pct = need ? Math.min(100, Math.round(have / need * 100)) : 0;
+  const title = S.mode === 'group' ? 'ตารางเรียน ' + gName(id) : S.mode === 'teacher' ? 'ตารางสอน ' + ((M().teachers[id] || {}).name || '') : 'ตารางการใช้ห้อง ' + rName(id);
+  const meta = S.mode === 'group' ? `${(M().groups[id] || {}).level || ''}` : S.mode === 'teacher' ? `${have} ชม./สัปดาห์` : `${(M().rooms[id] || {}).kind || ''} · ใช้ ${have} ชม.`;
+
+  const left = `
+  <aside class="panel">
+    <div class="seg" role="group" aria-label="มุมมอง">
+      ${[['group','กลุ่มเรียน'],['teacher','ครูผู้สอน'],['room','ห้องเรียน']].map(([k,l]) => `<button data-act="mode" data-v="${k}" aria-pressed="${S.mode===k}">${l}</button>`).join('')}
+    </div>
+    <select id="entitySel" data-act="entity" aria-label="เลือก">${opts.map(([v,l,x]) => `<option value="${v}" ${v===id?'selected':''}>${esc(l)}${x && S.mode==='group' ? ' ('+esc(x)+')' : ''}</option>`).join('')}</select>
+    ${S.mode !== 'room' ? `<div><div class="meter"><span>จัดแล้ว</span><span class="num">${have}/${need} ชม.</span></div><div class="bar"><i style="width:${pct}%"></i></div></div>` : ''}
+    <div class="clist">
+      ${vc.length ? vc.map(([cid,c]) => courseRow(cid, c)).join('') : `<p class="muted" style="margin:0">${S.mode==='room' ? 'ยังไม่มีวิชาที่ใช้ห้องนี้ จัดวิชาได้จากมุมมองกลุ่มเรียนหรือครู' : 'ยังไม่มีรายวิชา เพิ่มได้ที่แท็บข้อมูลรายวิชา'}</p>`}
+    </div>
+  </aside>`;
+
+  let pickInfo = '';
+  if (S.pick) {
+    const pc = S.pick.slot ? M().courses[(S.plan.slots[S.pick.slot] || {}).course] : M().courses[S.pick.course];
+    const len = S.pick.slot ? (S.plan.slots[S.pick.slot] || {}).len : S.pick.len;
+    pickInfo = `<div class="pickbar"><span>${S.pick.slot ? 'ย้าย' : 'วาง'} <b>${esc(subj(pc || {}).name)}</b> ${len} คาบ · คลิกช่องสีเขียวเพื่อวาง</span><button class="btn" data-act="cancelPick" style="margin-left:auto">ยกเลิก</button></div>`;
+  }
+
+  // grid
+  let g = `<div class="h"></div>`;
+  for (let p = 1; p <= NP; p++) {
+    if (p === 4) g += `<div class="h">พัก</div>`;
+    g += `<div class="h ${p>8?'eve':''}"><b>${p}</b><span class="num">${TIMES[p]}</span></div>`;
+  }
+  const col = p => p <= 3 ? p + 1 : p + 2;
+  DAYS.forEach((dn, d) => {
+    const row = d + 2;
+    g += `<div class="day" style="grid-row:${row};grid-column:1">${dn}</div>`;
+    for (let p = 1; p <= NP; p++) {
+      let cls = p > 8 ? 'eve' : '';
+      let tip = `${dn} คาบ ${p}`;
+      if (S.pick) { const errs = candidateStatus(d, p); if (errs && !errs.length) cls += ' ok'; else { cls += ' no'; if (errs) tip += ' · ' + errs[0]; } }
+      g += `<button class="cell ${cls}" style="grid-row:${row};grid-column:${col(p)}" data-act="cell" data-d="${d}" data-p="${p}" title="${esc(tip)}" aria-label="${esc(tip)}"></button>`;
+    }
+  });
+  g += `<div class="lunch" style="grid-row:2 / span 5">พัก 60 นาที</div>`;
+  for (const [sid,s] of vs) {
+    const c = M().courses[s.course]; const sj = subj(c);
+    const line2 = S.mode === 'group' ? [tName(c.teacher) || 'ยังไม่ระบุครู', rName(s.room)].filter(Boolean).join(' · ')
+                : S.mode === 'teacher' ? [gNames(c), rName(s.room)].filter(Boolean).join(' · ')
+                : [gNames(c), tName(c.teacher)].filter(Boolean).join(' · ');
+    const isBad = bad.has(sid);
+    const selc = S.pick && S.pick.slot === sid;
+    g += `<button class="blk ${isBad?'bad':''} ${selc?'sel':''}" draggable="${!s.locked}" data-act="slot" data-id="${sid}" style="--h:${hue(c.subject)};grid-row:${s.day+2};grid-column:${col(s.start)} / span ${s.len}${S.pick && !selc ? ';pointer-events:none;opacity:.75' : ''}" title="${esc(sj.code+' '+sj.name)}">
+      ${s.locked ? '<span class="lk">ล็อก</span>' : ''}<span class="n">${esc(sj.name)}</span><span class="s">${esc(line2)}</span>${S.mode==='group' && c.groups.length>1 ? `<span class="s">เรียนร่วม ${esc(gNames(c))}</span>` : ''}${isBad ? '<span class="s" style="color:var(--bad)">ชนกัน</span>' : ''}</button>`;
+  }
+
+  const right = `
+  <section class="gridwrap">
+    <div class="ghead"><div><h2>${esc(title)}</h2><div class="meta">${esc(meta)}</div></div>
+      <div class="tools">
+        <button class="btn pri" data-act="auto" data-v="view" ${S.busy||S.mode==='room'?'disabled':''}>${S.busy ? 'กำลังจัด…' : 'จัดอัตโนมัติ (หน้านี้)'}</button>
+        <button class="btn" data-act="auto" data-v="all" ${S.busy?'disabled':''}>จัดอัตโนมัติทั้งแผนก</button>
+        <button class="btn danger" data-act="clearView">ล้างตารางหน้านี้</button>
+      </div></div>
+    ${pickInfo}
+    <div class="scroll"><div class="tt" id="tt">${g}</div></div>
+    <div class="legend"><span>คาบ 1–3 เช้า · 4–8 บ่าย · 9–11 ภาคค่ำ (ลายเส้น)</span><span>กรอบแดง = เวลาชนกัน</span><span>ลากวิชาไปวาง หรือคลิกชิปจำนวนคาบแล้วคลิกช่อง</span></div>
+  </section>`;
+  $('#main').innerHTML = `<div class="board">${left}${right}</div>`;
+}
+
+function courseRow(cid, c){
+  const sj = subj(c); const rem = remaining(cid);
+  const placed = courseSlots(cid).reduce((a,[i,s]) => a + s.len, 0);
+  const sub = S.mode === 'teacher' ? gNames(c) : [tName(c.teacher) || 'ยังไม่ระบุครู', c.groups.length > 1 ? 'รวม ' + gNames(c) : ''].filter(Boolean).join(' · ');
+  return `<div class="crow ${rem.length?'':'done'}" style="--h:${hue(c.subject)}">
+    <div class="nm">${esc(sj.name)}</div>
+    <div class="sub"><span class="num">${esc(sj.code)}</span> · ${esc(sub)}</div>
+    <div class="chips"><span class="tag ${rem.length?'':'ok'} num">${placed}/${c.hours} ชม.</span>
+      ${c.activity ? '<span class="tag">กิจกรรม</span>' : ''}
+      ${!c.teacher ? '<span class="tag warn">ไม่มีครู</span>' : ''}
+      ${rem.map((l,i) => `<button class="chip" draggable="true" data-act="pick" data-c="${cid}" data-len="${l}" aria-pressed="${!!(S.pick && S.pick.course===cid && S.pick.len===l)}" title="วาง ${l} คาบ">+${l} คาบ</button>`).join('')}
+    </div></div>`;
+}
+
+function renderCheck(){
+  const bad = allConflicts();
+  const cs = courses();
+  const need = cs.reduce((a,[i,c]) => a + (c.hours||0), 0);
+  const have = slots().reduce((a,[i,s]) => a + s.len, 0);
+  const unplaced = cs.filter(([cid]) => remaining(cid).length);
+  const noT = cs.filter(([cid,c]) => !c.teacher);
+  // conflict list
+  const occ = buildOcc(); const rows = [];
+  const seen = new Set();
+  for (const [k, ids] of occ) if (ids.length > 1) {
+    const [kind, ent, dp] = k.split('|'); const [d,p] = dp.split(':');
+    const key = kind + ent + d + ids.slice().sort().join(); if (seen.has(key)) continue; seen.add(key);
+    rows.push({kind, ent, d:+d, p:+p, ids});
+  }
+  const kindName = {T:'ครู', G:'กลุ่มเรียน', R:'ห้อง'};
+  const entName = (k,e) => k==='T' ? tName(e) : k==='G' ? gName(e) : rName(e);
+  const tl = {}; for (const [cid,c] of cs) if (c.teacher) { tl[c.teacher] ||= {need:0, have:0}; tl[c.teacher].need += c.hours||0; tl[c.teacher].have += courseSlots(cid).reduce((a,[i,s]) => a+s.len, 0); }
+  const gl = {}; for (const [gid] of sortedGroups()) gl[gid] = {need:0, have:0, days:[0,0,0,0,0]};
+  for (const [cid,c] of cs) for (const g of c.groups||[]) if (gl[g]) { gl[g].need += c.hours||0; }
+  for (const [sid,s] of slots()) for (const g of M().courses[s.course].groups||[]) if (gl[g]) { gl[g].have += s.len; gl[g].days[s.day] += s.len; }
+
+  $('#main').innerHTML = `
+  <div class="cards">
+    <div class="stat ${have>=need?'good':''}"><b class="num">${have}/${need}</b><span>ชั่วโมงที่จัดแล้ว / ต้องจัด</span></div>
+    <div class="stat ${rows.length?'bad':'good'}"><b class="num">${rows.length}</b><span>จุดที่เวลาชนกัน</span></div>
+    <div class="stat ${unplaced.length?'':'good'}"><b class="num">${unplaced.length}</b><span>รายวิชาที่ยังจัดไม่ครบ</span></div>
+    <div class="stat"><b class="num">${noT.length}</b><span>รายวิชาที่ยังไม่ระบุครู</span></div>
+  </div>
+  <div class="sec"><h3>เวลาชนกัน</h3>${rows.length ? `<div class="tbl"><table><thead><tr><th>ประเภท</th><th>ชื่อ</th><th>วัน / คาบ</th><th>วิชาที่ชน</th></tr></thead><tbody>${rows.map(r => `<tr><td><span class="tag bad">${kindName[r.kind]}</span></td><td>${esc(entName(r.kind,r.ent))}</td><td class="num">${DAYS[r.d]} ${r.p}</td><td>${r.ids.map(i => esc(subj(M().courses[S.plan.slots[i].course]).name) + ' <span class="muted">(' + esc(gNames(M().courses[S.plan.slots[i].course])) + ')</span>').join('<br>')}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted" style="margin:0">ไม่มีเวลาชนกัน</p>'}</div>
+  <div class="sec"><h3>รายวิชาที่ยังจัดไม่ครบ</h3>${unplaced.length ? `<div class="tbl"><table><thead><tr><th>วิชา</th><th>กลุ่ม</th><th>ครู</th><th>เหลือ</th><th></th></tr></thead><tbody>${unplaced.map(([cid,c]) => `<tr><td>${esc(subj(c).name)}</td><td>${esc(gNames(c))}</td><td>${esc(tName(c.teacher)||'—')}</td><td class="num">${remaining(cid).join('+')} คาบ</td><td><button class="btn" data-act="goto" data-g="${c.groups[0]}">ไปที่ตาราง</button></td></tr>`).join('')}</tbody></table></div>` : '<p class="muted" style="margin:0">จัดครบทุกวิชาแล้ว</p>'}</div>
+  <div class="sec"><h3>ภาระสอนของครู</h3><div class="tbl"><table><thead><tr><th>ครู</th><th>จัดแล้ว / ตามรายวิชา (ชม./สัปดาห์)</th></tr></thead><tbody>${sortedTeachers().filter(([id]) => tl[id]).map(([id,t]) => `<tr><td>${esc(t.name)}</td><td class="num">${tl[id].have} / ${tl[id].need}</td></tr>`).join('')}</tbody></table></div></div>
+  <div class="sec"><h3>ชั่วโมงเรียนต่อวันของแต่ละกลุ่ม</h3><div class="tbl"><table><thead><tr><th>กลุ่ม</th>${DAYS.map(d => `<th>${d}</th>`).join('')}<th>รวม</th></tr></thead><tbody>${sortedGroups().map(([id,g]) => `<tr><td>${esc(g.name)}</td>${gl[id].days.map(x => `<td class="num" ${x>(settings().maxPerDay||7)?'style="color:var(--bad);font-weight:600"':''}>${x}</td>`).join('')}<td class="num">${gl[id].have}/${gl[id].need}</td></tr>`).join('')}</tbody></table></div></div>`;
+}
+
+function renderData(){
+  const tabs = [['courses','รายวิชาที่เปิดสอน'],['teachers','ครู'],['groups','กลุ่มเรียน'],['rooms','ห้องเรียน'],['subjects','รหัสวิชา']];
+  let body = '';
+  const tOpts = sel => `<option value="">— ยังไม่ระบุ —</option>` + sortedTeachers().map(([id,t]) => `<option value="${id}" ${id===sel?'selected':''}>${esc(t.short)}</option>`).join('');
+  const rOpts = sel => `<option value="">— ไม่กำหนด —</option>` + sortBy(live(M().rooms), ([i,r]) => r.name).map(([id,r]) => `<option value="${id}" ${id===sel?'selected':''}>${esc(r.name)}</option>`).join('');
+  if (S.dataTab === 'courses') {
+    const q = S.filter.trim();
+    let list = sortBy(courses(), ([cid,c]) => ((M().groups[c.groups[0]]||{}).order ?? 999) + ' ' + subj(c).code);
+    if (q) list = list.filter(([cid,c]) => (subj(c).name + subj(c).code + gNames(c) + tName(c.teacher)).includes(q));
+    body = `<div class="row"><input type="text" id="flt" data-act="filter" placeholder="ค้นหาวิชา กลุ่ม หรือครู" value="${esc(S.filter)}" style="max-width:320px"><button class="btn pri" data-act="newCourse">เพิ่มรายวิชาที่เปิดสอน</button><span class="muted" style="font-size:12px">รูปแบบคาบ เช่น 4 = ต่อเนื่อง 4 คาบ, 2+3 = แยก 2 ครั้ง</span></div>
+    <div class="tbl"><table><thead><tr><th>รหัส / ชื่อวิชา</th><th>กลุ่มเรียน</th><th>ครูผู้สอน</th><th>ชม./สัปดาห์</th><th>รูปแบบคาบ</th><th>ห้อง</th><th>ใช้ห้องแผนก</th><th></th></tr></thead><tbody>
+    ${list.map(([cid,c]) => `<tr><td><span class="num muted">${esc(subj(c).code)}</span><br>${esc(subj(c).name)}${c.note?`<br><span class="tag">${esc(c.note)}</span>`:''}</td>
+      <td><button class="btn" data-act="editGroups" data-c="${cid}" style="text-align:left">${esc(gNames(c))}</button></td>
+      <td><select data-act="mset" data-path="courses.${cid}.teacher">${tOpts(c.teacher)}</select></td>
+      <td><input type="number" min="1" max="20" value="${c.hours}" data-act="mset" data-num="1" data-path="courses.${cid}.hours" style="width:64px"></td>
+      <td><input type="text" value="${esc(c.pattern||'')}" data-act="mset" data-path="courses.${cid}.pattern" style="width:72px"></td>
+      <td><select data-act="mset" data-path="courses.${cid}.room">${rOpts(c.room)}</select></td>
+      <td><select data-act="mset" data-path="courses.${cid}.roomMode"><option value="dept" ${c.roomMode!=='none'?'selected':''}>ใช่</option><option value="none" ${c.roomMode==='none'?'selected':''}>ไม่ใช้</option></select></td>
+      <td><button class="btn danger" data-act="delCourse" data-c="${cid}">ลบ</button></td></tr>`).join('')}
+    </tbody></table></div>`;
+  } else if (S.dataTab === 'teachers') {
+    body = `<div class="row"><button class="btn pri" data-act="add" data-k="teachers">เพิ่มครู</button></div><div class="tbl"><table><thead><tr><th>ชื่อย่อ</th><th>ชื่อ-สกุล</th><th>วุฒิการศึกษา</th><th>แผนก</th><th>ชม.ตามรายวิชา</th><th></th></tr></thead><tbody>
+    ${sortedTeachers().map(([id,t]) => `<tr><td><input type="text" value="${esc(t.short)}" data-act="mset" data-path="teachers.${id}.short"></td><td><input type="text" value="${esc(t.name)}" data-act="mset" data-path="teachers.${id}.name"></td><td><input type="text" value="${esc(t.degree||'')}" data-act="mset" data-path="teachers.${id}.degree"></td><td><input type="text" value="${esc(t.dept||'')}" data-act="mset" data-path="teachers.${id}.dept"></td><td class="num">${courses().filter(([c,x]) => x.teacher===id).reduce((a,[c,x]) => a + (x.hours||0), 0)}</td><td><button class="btn danger" data-act="del" data-k="teachers" data-id="${id}">ลบ</button></td></tr>`).join('')}</tbody></table></div>`;
+  } else if (S.dataTab === 'groups') {
+    body = `<div class="row"><button class="btn pri" data-act="add" data-k="groups">เพิ่มกลุ่มเรียน</button></div><div class="tbl"><table><thead><tr><th>ชื่อกลุ่ม</th><th>ระดับ</th><th>แผนก</th><th>ลำดับ</th><th>รายวิชา</th><th></th></tr></thead><tbody>
+    ${sortedGroups().map(([id,g]) => `<tr><td><input type="text" value="${esc(g.name)}" data-act="mset" data-path="groups.${id}.name"></td><td><select data-act="mset" data-path="groups.${id}.level">${['ปวช.','ปวส.','นอกแผนก'].map(l => `<option ${g.level===l?'selected':''}>${l}</option>`).join('')}</select></td><td><input type="text" value="${esc(g.dept||'')}" data-act="mset" data-path="groups.${id}.dept"></td><td><input type="number" value="${g.order??''}" data-num="1" data-act="mset" data-path="groups.${id}.order" style="width:70px"></td><td class="num">${courses().filter(([c,x]) => (x.groups||[]).includes(id)).length}</td><td><button class="btn danger" data-act="del" data-k="groups" data-id="${id}">ลบ</button></td></tr>`).join('')}</tbody></table></div>`;
+  } else if (S.dataTab === 'rooms') {
+    body = `<div class="row"><button class="btn pri" data-act="add" data-k="rooms">เพิ่มห้อง</button><span class="muted" style="font-size:12px">ห้องที่ประเภทเป็น “${DEPT_KIND}” ระบบจะเลือกให้อัตโนมัติ · “ใช้ร่วมได้” = ไม่ตรวจชน เช่น สนาม</span></div><div class="tbl"><table><thead><tr><th>ชื่อห้อง</th><th>ประเภท</th><th>ใช้ร่วมได้</th><th></th></tr></thead><tbody>
+    ${sortBy(live(M().rooms), ([i,r]) => r.name).map(([id,r]) => `<tr><td><input type="text" value="${esc(r.name)}" data-act="mset" data-path="rooms.${id}.name"></td><td><input type="text" value="${esc(r.kind||'')}" data-act="mset" data-path="rooms.${id}.kind"></td><td><select data-act="mset" data-bool="1" data-path="rooms.${id}.shared"><option value="0" ${!r.shared?'selected':''}>ไม่</option><option value="1" ${r.shared?'selected':''}>ใช่</option></select></td><td><button class="btn danger" data-act="del" data-k="rooms" data-id="${id}">ลบ</button></td></tr>`).join('')}</tbody></table></div>`;
+  } else {
+    body = `<div class="row"><button class="btn pri" data-act="add" data-k="subjects">เพิ่มรหัสวิชา</button></div><div class="tbl"><table><thead><tr><th>รหัสวิชา</th><th>ชื่อวิชา</th><th>ท</th><th>ป</th><th>นก</th></tr></thead><tbody>
+    ${sortBy(live(M().subjects), ([i,s]) => s.code).map(([id,s]) => `<tr><td><input type="text" value="${esc(s.code)}" data-act="mset" data-path="subjects.${id}.code" style="width:110px"></td><td><input type="text" value="${esc(s.name)}" data-act="mset" data-path="subjects.${id}.name"></td>${['t','p','c'].map(k => `<td><input type="number" min="0" value="${s[k]??0}" data-num="1" data-act="mset" data-path="subjects.${id}.${k}" style="width:56px"></td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+  }
+  $('#main').innerHTML = `<div class="subtabs">${tabs.map(([k,l]) => `<button data-act="dtab" data-v="${k}" aria-pressed="${S.dataTab===k}">${l}</button>`).join('')}</div><div class="sec">${body}</div>`;
+}
+
+function renderSettings(){
+  const st = settings(); const sg = st.signers || {};
+  const f = (label, path, val, type='text') => `<label style="display:grid;gap:4px;font-size:13px"><span class="muted">${label}</span><input type="${type}" value="${esc(val??'')}" data-act="mset" ${type==='number'?'data-num="1"':''} data-path="${path}"></label>`;
+  $('#main').innerHTML = `
+  <div class="sec"><h3>ส่งออกเป็น Excel</h3><p class="muted" style="margin:0">สร้างไฟล์ .xlsx รูปแบบเดียวกับไฟล์เดิม: ตารางเรียนทุกกลุ่ม ตารางสอนครูทุกคน และตารางการใช้ห้อง พร้อมช่องลงนาม</p>
+    <div class="row"><button class="btn pri" data-act="export" ${S.exporting?'disabled':''}>${S.exporting ? 'กำลังสร้างไฟล์…' : 'ดาวน์โหลดไฟล์ Excel'}</button></div></div>
+  <div class="sec"><h3>ข้อมูลทั่วไป</h3><div class="cards">
+    ${f('ชื่อสถานศึกษา','settings.school',st.school)}${f('แผนก','settings.dept',st.dept)}${f('ภาคเรียน / ปีการศึกษา','settings.term',st.term)}
+    ${f('จัดอัตโนมัติไม่เกินคาบที่','settings.autoMaxPeriod',st.autoMaxPeriod,'number')}${f('ชั่วโมงเรียนต่อวันที่เหมาะสม','settings.maxPerDay',st.maxPerDay,'number')}
+  </div></div>
+  <div class="sec"><h3>ผู้ลงนามท้ายตาราง</h3><div class="cards">
+    ${f('หัวหน้าแผนก','settings.signers.head',sg.head)}${f('ตำแหน่ง','settings.signers.headRole',sg.headRole)}
+    ${f('หัวหน้างานหลักสูตร','settings.signers.curr',sg.curr)}${f('ตำแหน่ง','settings.signers.currRole',sg.currRole)}
+    ${f('รองผู้อำนวยการฝ่ายวิชาการ','settings.signers.vice',sg.vice)}${f('ตำแหน่ง','settings.signers.viceRole',sg.viceRole)}
+    ${f('ผู้อำนวยการ','settings.signers.dir',sg.dir)}${f('ตำแหน่ง','settings.signers.dirRole',sg.dirRole)}
+  </div></div>
+  <div class="sec"><h3>ล้างตารางทั้งหมด</h3><p class="muted" style="margin:0">ลบทุกคาบที่จัดไว้ ยกเว้นคาบที่ล็อก (เช่น กิจกรรมวันพุธ) รายวิชาและข้อมูลครูยังอยู่ครบ</p><div class="row"><button class="btn danger" data-act="clearAll">ล้างตารางทั้งแผนก…</button></div></div>`;
+}
+
+function renderModal(){
+  const r = $('#modalRoot'); const m = S.modal;
+  if (!m || !M()) { r.innerHTML = ''; return; }
+  let html = '';
+  if (m.type === 'slot') {
+    const s = S.plan.slots[m.id]; if (!s) { S.modal = null; r.innerHTML = ''; return; }
+    const c = M().courses[s.course]; const sj = subj(c); const occ = buildOcc();
+    const errs = conflicts(s, m.id, occ);
+    const roomsL = sortBy(live(M().rooms), ([i,x]) => (x.kind === DEPT_KIND ? '0' : '1') + x.name);
+    html = `<h3>${esc(sj.name)}</h3>
+      <dl class="kv"><dt>รหัสวิชา</dt><dd class="num">${esc(sj.code)} (ท ${sj.t} ป ${sj.p} นก ${sj.c})</dd><dt>กลุ่มเรียน</dt><dd>${esc(gNames(c))}</dd><dt>ครูผู้สอน</dt><dd>${esc((M().teachers[c.teacher]||{}).name || 'ยังไม่ระบุ')}</dd><dt>เวลา</dt><dd>${DAYS[s.day]} คาบ ${s.start}–${s.start+s.len-1} <span class="muted num">(${TIMES[s.start].split('–')[0]}–${TIMES[s.start+s.len-1].split('–')[1]})</span></dd></dl>
+      ${errs.length ? `<div class="pickbar" style="background:var(--bad-soft);border-color:var(--bad)">${errs.map(esc).join('<br>')}</div>` : ''}
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">ห้องเรียน</span><select data-act="slotRoom" data-id="${m.id}"><option value="">— ไม่ระบุห้อง —</option>${roomsL.map(([id,x]) => { const free = roomFree(id, s.day, s.start, s.len, m.id, occ); return `<option value="${id}" ${id===s.room?'selected':''} ${!free && id!==s.room ? 'disabled' : ''}>${esc(x.name)}${!free?' (ไม่ว่าง)':''}</option>`; }).join('')}</select></label>
+      <div class="row"><button class="btn pri" data-act="startMove" data-id="${m.id}" ${s.locked?'disabled':''}>ย้ายเวลา</button><button class="btn" data-act="toggleLock" data-id="${m.id}">${s.locked?'ปลดล็อก':'ล็อกไว้'}</button><button class="btn danger" data-act="delSlot" data-id="${m.id}" ${s.locked?'disabled':''}>นำออกจากตาราง</button><button class="btn" data-act="close" style="margin-left:auto">ปิด</button></div>`;
+  } else if (m.type === 'groups') {
+    const c = M().courses[m.id];
+    html = `<h3>กลุ่มที่เรียนวิชานี้</h3><p class="muted" style="margin:0">${esc(subj(c).name)} · เลือกหลายกลุ่ม = เรียนรวมในคาบเดียวกัน</p>
+      <div class="checks">${sortedGroups().map(([id,g]) => `<label><input type="checkbox" name="cg" value="${id}" ${(c.groups||[]).includes(id)?'checked':''}> ${esc(g.name)}</label>`).join('')}</div>
+      <div class="row"><button class="btn pri" data-act="saveGroups" data-c="${m.id}">บันทึก</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
+  } else if (m.type === 'newCourse') {
+    const g = m.group || (sortedGroups()[0]||[])[0];
+    const sList = sortBy(live(M().subjects), ([i,s]) => s.code);
+    html = `<h3>เพิ่มรายวิชาที่เปิดสอน</h3>
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">กลุ่มเรียน</span><select id="ncGroup">${sortedGroups().map(([id,x]) => `<option value="${id}" ${id===g?'selected':''}>${esc(x.name)}</option>`).join('')}</select></label>
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">รายวิชา (เลือกจากรหัสวิชา หรือเพิ่มรหัสใหม่ในแท็บรหัสวิชา)</span><select id="ncSubj">${sList.map(([id,s]) => `<option value="${id}">${esc(s.code+' '+s.name)} (${s.t+s.p} ชม.)</option>`).join('')}</select></label>
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">ครูผู้สอน</span><select id="ncTeacher"><option value="">— ยังไม่ระบุ —</option>${sortedTeachers().map(([id,t]) => `<option value="${id}">${esc(t.short)}</option>`).join('')}</select></label>
+      <div class="row"><button class="btn pri" data-act="createCourse">เพิ่ม</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
+  } else if (m.type === 'confirm') {
+    html = `<h3>${esc(m.title)}</h3><p style="margin:0">${esc(m.text)}</p><div class="row"><button class="btn pri" style="background:var(--bad);border-color:var(--bad)" data-act="confirmYes">${esc(m.yes)}</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
+  }
+  r.innerHTML = `<div class="scrim" data-act="scrim"><div class="modal" role="dialog" aria-modal="true">${html}</div></div>`;
+}
+
+/* ---------- events ---------- */
+function defaultPattern(h){ return ({1:'1',2:'2',3:'3',4:'4',5:'2+3',6:'3+3',7:'3+4',8:'4+4'})[h] || String(h); }
+function confirmBox(title, text, yes, fn){ S.modal = {type:'confirm', title, text, yes}; S._confirm = fn; renderModal(); }
+function clearSlots(filterFn){ const patch = {}; for (const [id,s] of slots()) if (!s.locked && filterFn(id,s)) patch[id] = null; if (Object.keys(patch).length) write('plan', {slots: patch}); else toast('ไม่มีคาบให้ล้าง'); }
+
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-act]'); if (!el) return;
+  const a = el.dataset.act;
+  if (a === 'tab') { S.tab = el.dataset.v; S.pick = null; saveUi(); render(); }
+  else if (a === 'mode') { S.mode = el.dataset.v; S.pick = null; saveUi(); render(); }
+  else if (a === 'pick') { const cid = el.dataset.c, len = +el.dataset.len; S.pick = (S.pick && S.pick.course === cid && S.pick.len === len) ? null : {course: cid, len}; render(); }
+  else if (a === 'cancelPick') { S.pick = null; render(); }
+  else if (a === 'cell') {
+    if (!S.pick) return;
+    const d = +el.dataset.d, p = +el.dataset.p;
+    const ok = S.pick.slot ? moveSlot(S.pick.slot, d, p) : placeCourse(S.pick.course, S.pick.len, d, p);
+    if (ok) { if (S.pick && S.pick.course && remaining(S.pick.course).includes(S.pick.len)) render(); else { S.pick = null; render(); } }
+  }
+  else if (a === 'slot') { S.modal = {type:'slot', id: el.dataset.id}; renderModal(); }
+  else if (a === 'scrim') { if (e.target === el) { S.modal = null; renderModal(); } }
+  else if (a === 'close') { S.modal = null; renderModal(); }
+  else if (a === 'startMove') { S.pick = {slot: el.dataset.id}; S.modal = null; render(); }
+  else if (a === 'toggleLock') { const s = S.plan.slots[el.dataset.id]; setSlot(el.dataset.id, {locked: !s.locked}); }
+  else if (a === 'delSlot') { setSlot(el.dataset.id, null); S.modal = null; render(); }
+  else if (a === 'auto') runAuto(el.dataset.v);
+  else if (a === 'clearView') { const ids = new Set(viewSlots().map(([i]) => i)); confirmBox('ล้างตารางหน้านี้?', 'คาบที่ไม่ได้ล็อกในตารางที่แสดงอยู่จะถูกนำออก (ส่งผลกับตารางครูและกลุ่มอื่นที่เรียนร่วมด้วย)', 'ล้างตาราง', () => clearSlots(id => ids.has(id))); }
+  else if (a === 'clearAll') confirmBox('ล้างตารางทั้งแผนก?', 'คาบทั้งหมดที่ไม่ได้ล็อกจะถูกนำออก ทุกคนที่เปิดหน้านี้จะเห็นผลทันที', 'ล้างทั้งหมด', () => clearSlots(() => true));
+  else if (a === 'confirmYes') { const fn = S._confirm; S.modal = null; S._confirm = null; renderModal(); fn && fn(); }
+  else if (a === 'goto') { S.tab = 'board'; S.mode = 'group'; S.sel.group = el.dataset.g; saveUi(); render(); }
+  else if (a === 'dtab') { S.dataTab = el.dataset.v; render(); }
+  else if (a === 'editGroups') { S.modal = {type:'groups', id: el.dataset.c}; renderModal(); }
+  else if (a === 'saveGroups') { const gs = [...document.querySelectorAll('input[name=cg]:checked')].map(x => x.value); if (!gs.length) { toast('เลือกอย่างน้อย 1 กลุ่ม'); return; } S.modal = null; setM(['courses', el.dataset.c, 'groups'], gs); }
+  else if (a === 'newCourse') { S.modal = {type:'newCourse'}; renderModal(); }
+  else if (a === 'createCourse') {
+    const g = $('#ncGroup').value, sid = $('#ncSubj').value, t = $('#ncTeacher').value; const sj = M().subjects[sid]; if (!sj) return;
+    const h = (sj.t||0) + (sj.p||0);
+    const code = sj.code || '';
+    const c = {subject: sid, groups: [g], teacher: t, hours: h, pattern: defaultPattern(h), room: '', roomMode: /^(20105|30105)/.test(code) || t ? 'dept' : 'none', note: ''};
+    S.modal = null; setM(['courses', uid('c')], c); toast('เพิ่มรายวิชาแล้ว');
+  }
+  else if (a === 'delCourse') { const cid = el.dataset.c; confirmBox('ลบรายวิชานี้?', subj(M().courses[cid]).name + ' (' + gNames(M().courses[cid]) + ') และคาบที่จัดไว้ของวิชานี้จะถูกลบ', 'ลบ', () => { const patch = {}; for (const [id,s] of slots()) if (s.course === cid) patch[id] = null; if (Object.keys(patch).length) write('plan', {slots: patch}); setM(['courses', cid], null); }); }
+  else if (a === 'add') {
+    const k = el.dataset.k; const id = uid(k[0]);
+    const blank = {teachers:{name:'ครูใหม่', short:'อ.ใหม่', degree:'', dept:'อิเล็กทรอนิกส์'}, groups:{name:'กลุ่มใหม่', level:'ปวช.', dept:'อิเล็กทรอนิกส์', order:50}, rooms:{name:'ห้องใหม่', kind:DEPT_KIND}, subjects:{code:'', name:'วิชาใหม่', t:0, p:0, c:0}}[k];
+    setM([k, id], blank); toast('เพิ่มแล้ว แก้ไขรายละเอียดในตาราง');
+  }
+  else if (a === 'del') {
+    const k = el.dataset.k, id = el.dataset.id;
+    const used = k === 'teachers' ? courses().filter(([c,x]) => x.teacher === id).length : k === 'groups' ? courses().filter(([c,x]) => (x.groups||[]).includes(id)).length : slots().filter(([s,x]) => x.room === id).length;
+    if (used) { toast(`ยังมี ${used} รายการที่ใช้อยู่ ลบหรือเปลี่ยนก่อน`); return; }
+    confirmBox('ยืนยันการลบ?', 'ข้อมูลนี้จะถูกลบสำหรับทุกคน', 'ลบ', () => setM([k, id], null));
+  }
+  else if (a === 'export') exportXlsx();
+});
+document.addEventListener('change', e => {
+  const el = e.target;
+  if (el.dataset.act === 'entity') { S.sel[S.mode] = el.value; S.pick = null; saveUi(); render(); }
+  else if (el.dataset.act === 'slotRoom') { setSlot(el.dataset.id, {room: el.value}); }
+  else if (el.dataset.act === 'mset') {
+    let v = el.value;
+    if (el.dataset.num) v = v === '' ? null : Number(v);
+    if (el.dataset.bool) v = v === '1';
+    const path = el.dataset.path.split('.');
+    if (path[0] === 'courses' && path[2] === 'hours' && v) { const c = M().courses[path[1]]; const pat = patternOf(c).reduce((a,b) => a+b, 0); if (pat !== v) setM(['courses', path[1], 'pattern'], defaultPattern(v)); }
+    if (path[0] === 'courses' && path[2] === 'pattern') { const c = M().courses[path[1]]; const sum = String(v).split('+').map(x => parseInt(x,10)).filter(x => x>0); if (!sum.length || sum.some(x => x > 8)) { toast('รูปแบบคาบไม่ถูกต้อง เช่น 4 หรือ 2+3'); el.value = c.pattern; return; } if (sum.reduce((a,b) => a+b, 0) !== c.hours) toast('รูปแบบคาบรวมไม่เท่าชั่วโมง/สัปดาห์ ระบบจะใช้ชั่วโมงที่เหลือแทน'); }
+    setM(path, v);
+  }
+});
+document.addEventListener('input', e => { if (e.target.dataset.act === 'filter') { S.filter = e.target.value; clearTimeout(S._ft); S._ft = setTimeout(() => { const pos = e.target.selectionStart; renderData(); const f = $('#flt'); if (f) { f.focus(); f.setSelectionRange(pos, pos); } }, 250); } });
+document.addEventListener('focusout', () => { setTimeout(() => { if (S.pendingRender) render(); }, 0); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.modal) { S.modal = null; renderModal(); } else if (S.pick) { S.pick = null; render(); } } });
+
+// drag & drop
+document.addEventListener('dragstart', e => {
+  const el = e.target.closest && e.target.closest('[data-act]'); if (!el) return;
+  if (el.dataset.act === 'pick') S.pick = {course: el.dataset.c, len: +el.dataset.len};
+  else if (el.dataset.act === 'slot') S.pick = {slot: el.dataset.id};
+  else return;
+  e.dataTransfer.effectAllowed = 'move'; try { e.dataTransfer.setData('text/plain', 'x'); } catch(_) {}
+  setTimeout(() => render(), 0);
+});
+document.addEventListener('dragover', e => { const c = e.target.closest && e.target.closest('.cell.ok'); if (c) e.preventDefault(); });
+document.addEventListener('drop', e => {
+  const c = e.target.closest && e.target.closest('.cell'); if (!c || !S.pick) return; e.preventDefault();
+  const d = +c.dataset.d, p = +c.dataset.p;
+  if (S.pick.slot) moveSlot(S.pick.slot, d, p); else placeCourse(S.pick.course, S.pick.len, d, p);
+  S.pick = null; render();
+});
+document.addEventListener('dragend', () => { if (S.pick) { S.pick = null; render(); } });
+
+/* ---------- Excel export ---------- */
+function loadScript(src){ return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
+async function ensureExcel(){
+  if (window.ExcelJS) return;
+  try { await loadScript('https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js'); }
+  catch(e) { await loadScript('https://cdn.jsdelivr.net/npm/exceljs@4.4.0/dist/exceljs.min.js'); }
+}
+async function exportXlsx(){
+  if (!S.dl) { toast('หน้านี้ดาวน์โหลดไฟล์ไม่ได้ในมุมมองนี้'); return; }
+  S.exporting = true; render();
+  try {
+    await ensureExcel();
+    const wb = new ExcelJS.Workbook(); const st = settings(); const sg = st.signers || {};
+    const FONT = {name:'TH SarabunPSK', size:14};
+    const thin = {style:'thin'}; const B = {top:thin, left:thin, bottom:thin, right:thin};
+    const used = new Set();
+    const sheetName = n => { let b = String(n).replace(/[\\/?*\[\]:]/g, '-').slice(0, 28); let x = b, i = 2; while (used.has(x)) x = b + ' ' + (i++); used.add(x); return x; };
+    // columns: A day, B label, C-E p1-3, F lunch, G-N p4-11
+    const colOf = p => p <= 3 ? 2 + p : 3 + p;
+    function header(ws, title, info){
+      ws.columns = [{width:10},{width:14},...Array(3).fill({width:15}),{width:5},...Array(8).fill({width:15})];
+      ws.mergeCells(1,1,1,14); ws.getCell(1,1).value = st.school; ws.getCell(1,1).font = {...FONT, size:18, bold:true}; ws.getCell(1,1).alignment = {horizontal:'center'};
+      ws.mergeCells(2,1,2,9); ws.getCell(2,1).value = title; ws.getCell(2,1).font = {...FONT, size:16, bold:true};
+      ws.mergeCells(2,10,2,14); ws.getCell(2,10).value = info || st.term; ws.getCell(2,10).font = {...FONT, bold:true}; ws.getCell(2,10).alignment = {horizontal:'right'};
+      ws.getCell(3,1).value = 'วัน'; ws.getCell(3,2).value = 'คาบที่'; ws.getCell(4,2).value = 'เวลา';
+      for (let p = 1; p <= NP; p++) { ws.getCell(3, colOf(p)).value = p; ws.getCell(4, colOf(p)).value = TIMES[p].replace('–',' - '); }
+      ws.mergeCells(3,1,4,1);
+      for (let r = 3; r <= 4; r++) for (let c = 1; c <= 14; c++) { const x = ws.getCell(r,c); x.border = B; x.font = {...FONT, bold:true}; x.alignment = {horizontal:'center', vertical:'middle'}; x.fill = {type:'pattern', pattern:'solid', fgColor:{argb:'FFE3EFE9'}}; }
+    }
+    function grid(ws, list, labels, fn){
+      const top = 5;
+      DAYS.forEach((dn, d) => {
+        const r0 = top + d * 3;
+        ws.mergeCells(r0, 1, r0 + 2, 1); ws.getCell(r0, 1).value = dn;
+        labels.forEach((l, i) => ws.getCell(r0 + i, 2).value = l);
+        const mine = list.filter(([id,s]) => s.day === d);
+        for (const [id,s] of mine) {
+          const vals = fn(s); const c1 = colOf(s.start), c2 = colOf(s.start + s.len - 1);
+          vals.forEach((v, i) => { if (c2 > c1) { try { ws.mergeCells(r0+i, c1, r0+i, c2); } catch(_){} } ws.getCell(r0+i, c1).value = v; });
+        }
+        for (let i = 0; i < 3; i++) ws.getRow(r0 + i).height = 21;
+      });
+      ws.mergeCells(top, 6, top + 14, 6); ws.getCell(top, 6).value = 'พัก 60 นาที'; ws.getCell(top, 6).alignment = {textRotation: 90, vertical:'middle', horizontal:'center'};
+      for (let r = top; r < top + 15; r++) for (let c = 1; c <= 14; c++) { const x = ws.getCell(r,c); x.border = B; x.font = {...FONT, bold: c <= 2 || (r - top) % 3 === 0}; if (c !== 6) x.alignment = {horizontal: c<=2?'left':'center', vertical:'middle', shrinkToFit:true}; }
+      return top + 16;
+    }
+    function signers(ws, r){
+      const cells = [[sg.head, sg.headRole],[sg.curr, sg.currRole],[sg.vice, sg.viceRole],[sg.dir, sg.dirRole]];
+      r += 1; ws.mergeCells(r,1,r,14); ws.getCell(r,1).value = 'ได้ตรวจสอบตารางเรียน ตารางครูผู้สอน และตารางการใช้พื้นที่เรียนถูกต้องแล้ว'; ws.getCell(r,1).font = FONT;
+      r += 2;
+      const starts = [1,4,8,11];
+      cells.forEach(([n, role], i) => { const c = starts[i]; const e = c + 2 + (i===1?1:0);
+        [[ '.......................................................'], ['(' + (n||'') + ')'], [role||'']].forEach(([v], k) => { ws.mergeCells(r+k, c, r+k, e); const x = ws.getCell(r+k, c); x.value = v; x.font = FONT; x.alignment = {horizontal:'center'}; }); });
+    }
+    function listTable(ws, r, head, rows){
+      head.forEach((h, i) => { const x = ws.getCell(r, h[1]); x.value = h[0]; });
+      rows.forEach((row, k) => row.forEach((v, i) => ws.getCell(r+1+k, head[i][1]).value = v));
+      const mergesSpan = head.map((h,i) => [h[1], (head[i+1] ? head[i+1][1] - 1 : h[1])]);
+      for (let k = 0; k <= rows.length; k++) mergesSpan.forEach(([a,b]) => { if (b > a) { try { ws.mergeCells(r+k, a, r+k, b); } catch(_){} } for (let c = a; c <= b; c++) { const x = ws.getCell(r+k, c); x.border = B; x.font = {...FONT, bold: k===0}; } });
+      return r + rows.length + 1;
+    }
+    const allS = slots();
+    // group sheets
+    for (const [gid,g] of sortedGroups()) {
+      const ws = wb.addWorksheet(sheetName(g.name), {pageSetup:{orientation:'landscape', paperSize:9, fitToPage:true, fitToWidth:1, fitToHeight:1}});
+      header(ws, `ตารางเรียน ${g.level||''} ${g.name}  ${st.dept||''}`);
+      const list = allS.filter(([id,s]) => (M().courses[s.course].groups||[]).includes(gid));
+      let r = grid(ws, list, ['ชื่อวิชา','ผู้สอน','ห้องเรียน'], s => { const c = M().courses[s.course]; return [subj(c).name, (M().teachers[c.teacher]||{}).short || '', rName(s.room)]; });
+      const cs = courses().filter(([cid,c]) => (c.groups||[]).includes(gid));
+      const rows = cs.map(([cid,c], i) => { const sj = subj(c); return [i+1, sj.code, sj.name, sj.t, sj.p, sj.c, tName(c.teacher)]; });
+      rows.push(['รวม','','', rows.reduce((a,x) => a + (+x[3]||0), 0), rows.reduce((a,x) => a + (+x[4]||0), 0), rows.reduce((a,x) => a + (+x[5]||0), 0), '']);
+      r = listTable(ws, r, [['ที่',1],['รหัสวิชา',2],['ชื่อวิชา',3],['ทฤษฎี',7],['ปฏิบัติ',8],['หน่วยกิต',9],['ครูผู้สอน',10]], rows);
+      signers(ws, r);
+    }
+    // teacher sheets
+    for (const [tid,t] of sortedTeachers()) {
+      const cs = courses().filter(([cid,c]) => c.teacher === tid); if (!cs.length) continue;
+      const ws = wb.addWorksheet(sheetName(t.short || t.name), {pageSetup:{orientation:'landscape', paperSize:9, fitToPage:true, fitToWidth:1, fitToHeight:1}});
+      header(ws, `ตารางครูผู้สอน ${t.name}   วุฒิ ${t.degree||'-'}   แผนกวิชา ${t.dept||''}`);
+      const list = allS.filter(([id,s]) => M().courses[s.course].teacher === tid);
+      let r = grid(ws, list, ['รหัสวิชา,ชื่อวิชา','กลุ่มผู้เรียน','ห้องเรียน'], s => { const c = M().courses[s.course]; return [subj(c).code + ' ' + subj(c).name, gNames(c), rName(s.room)]; });
+      const lvl = c => ((M().groups[c.groups[0]]||{}).level === 'ปวส.') ? 1 : 0;
+      const rows = cs.map(([cid,c], i) => { const sj = subj(c); return [i+1, sj.code, sj.name, gNames(c), lvl(c) ? '' : c.hours, lvl(c) ? c.hours : '']; });
+      rows.push(['รวม','','','', rows.reduce((a,x) => a + (+x[4]||0), 0), rows.reduce((a,x) => a + (+x[5]||0), 0)]);
+      r = listTable(ws, r, [['ที่',1],['รหัสวิชา',2],['ชื่อวิชา',3],['แผนก/ชั้น/ห้อง',7],['ชม. ปวช.',10],['ชม. ปวส.',11]], rows);
+      signers(ws, r);
+    }
+    // room sheets
+    for (const [rid,rm] of sortBy(live(M().rooms), ([i,x]) => x.name)) {
+      if (rm.kind !== DEPT_KIND) continue;
+      const ws = wb.addWorksheet(sheetName('ห้อง ' + rm.name), {pageSetup:{orientation:'landscape', paperSize:9, fitToPage:true, fitToWidth:1, fitToHeight:1}});
+      header(ws, `ตารางการใช้พื้นที่เรียน ห้อง ${rm.name}  ${st.dept||''}`);
+      const list = allS.filter(([id,s]) => s.room === rid);
+      const r = grid(ws, list, ['ชื่อวิชา','ผู้เรียน','ผู้สอน'], s => { const c = M().courses[s.course]; return [subj(c).name, gNames(c), tName(c.teacher)]; });
+      signers(ws, r);
+    }
+    const buf = await wb.xlsx.writeBuffer();
+    const name = 'ตารางเรียนตารางสอน ' + (st.term || '').replace(/[^฀-๿0-9 ]/g,'').trim() + '.xlsx';
+    await S.dl.save({filename: name, data: new Blob([buf])});
+    toast('ส่งไฟล์ Excel แล้ว');
+  } catch (e) {
+    if (e && e.code === 'declined') toast('ยกเลิกการดาวน์โหลด');
+    else toast('สร้างไฟล์ไม่สำเร็จ: ' + (e && (e.code || e.message) || 'ไม่ทราบสาเหตุ'));
+  } finally { S.exporting = false; render(); }
+}
+
+/* ---------- boot ---------- */
+render();
+(async () => {
+  for (let i = 0; i < 30 && !(window.claude && window.claude.use); i++) await new Promise(r => setTimeout(r, 100));
+  if (!(window.claude && window.claude.use)) { S.dbTried = true; S.loaded.m = true; render(); return; }
+  const [db, dl] = await Promise.all([window.claude.use('db'), window.claude.use('downloads')]);
+  S.db = db; S.dl = dl; S.dbTried = true;
+  if (!db) { S.loaded.m = true; render(); return; }
+  const onErr = e => { S.online = false; render(); if (e && e.code !== 'revoked') toast('การเชื่อมต่อข้อมูลขาดหาย รีเฟรชหน้าเพื่อเชื่อมใหม่'); };
+  db.doc('tt/master').onSnapshot(snap => { S.loaded.m = true; S.online = true; S.exists.master = snap.exists; S.master = snap.exists ? JSON.parse(JSON.stringify(snap.data())) : null; render(); }, onErr);
+  db.doc('tt/plan').onSnapshot(snap => { S.loaded.p = true; S.exists.plan = snap.exists; S.plan = snap.exists ? JSON.parse(JSON.stringify(snap.data())) : {slots:{}}; if (!S.plan.slots) S.plan.slots = {}; render(); }, onErr);
+})();
+})();
+</script>
+
+</body>
+</html>
