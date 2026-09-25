@@ -39,7 +39,7 @@
   --shadow:0 1px 2px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.25);
 }
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font:14px/1.5 var(--f-body);padding-inline:16px;padding-block:0 40px}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 var(--f-body);padding-inline:16px;padding-block:0 40px}
 h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
 button,select,input{font:inherit;color:inherit}
 button{cursor:pointer}
@@ -49,89 +49,89 @@ button{cursor:pointer}
 /* header */
 .top{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 24px;padding-block:20px 12px;max-width:1500px;margin:0 auto}
 .brand{display:flex;gap:12px;align-items:center;min-width:0}
-.mark{width:40px;height:40px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center}
-.brand h1{font-size:22px;line-height:1.15}
-.brand p{margin:2px 0 0;color:var(--muted);font-size:13px}
+.mark{width:46px;height:46px;flex:none;border-radius:8px;background:var(--accent);display:grid;place-items:center}
+.brand h1{font-size:26px;line-height:1.15}
+.brand p{margin:2px 0 0;color:var(--muted);font-size:16px}
 .tabs{display:flex;gap:4px;margin-left:auto;background:var(--sunk);padding:4px;border-radius:10px;flex-wrap:wrap}
 .tabs button{border:0;background:transparent;padding:7px 14px;border-radius:7px;font-weight:500;color:var(--muted)}
 .tabs button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
 main{max-width:1500px;margin:0 auto}
-.status{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);padding-bottom:10px;max-width:1500px;margin:0 auto}
+.status{display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);padding-bottom:10px;max-width:1500px;margin:0 auto}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
 .dot.on{background:var(--accent)}
 
 /* board */
-.board{display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;align-items:start}
+.board{display:grid;grid-template-columns:370px minmax(0,1fr);gap:16px;align-items:start}
 @media (max-width:900px){.board{grid-template-columns:minmax(0,1fr)}}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px}
 .seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--sunk);padding:3px;border-radius:8px}
-.seg button{border:0;background:transparent;padding:6px 4px;border-radius:6px;font-size:13px;color:var(--muted)}
+.seg button{border:0;background:transparent;padding:6px 4px;border-radius:6px;font-size:16px;color:var(--muted)}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--shadow)}
 select,input[type=text],input[type=number]{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:6px 9px;width:100%;min-width:0}
-.meter{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.meter{display:flex;justify-content:space-between;font-size:14px;color:var(--muted)}
 .bar{height:6px;border-radius:3px;background:var(--sunk);overflow:hidden}
 .bar i{display:block;height:100%;background:var(--accent)}
 .clist{display:flex;flex-direction:column;gap:6px;max-height:62vh;overflow:auto;margin-inline:-4px;padding-inline:4px}
 @media (max-width:900px){.clist{max-height:none}}
 .crow{border:1px solid var(--line);border-radius:9px;padding:8px 10px;display:grid;gap:4px;border-left:4px solid oklch(62% 0.12 var(--h))}
 .crow.done{opacity:.6}
-.crow .nm{font-weight:600;font-size:13px;line-height:1.35}
-.crow .sub{font-size:12px;color:var(--muted)}
+.crow .nm{font-weight:600;font-size:16px;line-height:1.35}
+.crow .sub{font-size:14px;color:var(--muted)}
 .chips{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-.chip{border:1px dashed var(--copper);background:var(--copper-soft);color:var(--ink);border-radius:6px;padding:1px 9px;font-size:12px;font-family:var(--f-mono)}
+.chip{border:1px dashed var(--copper);background:var(--copper-soft);color:var(--ink);border-radius:6px;padding:1px 9px;font-size:14px;font-family:var(--f-mono)}
 .chip[aria-pressed="true"]{background:var(--copper);color:var(--surface);border-style:solid}
-.tag{font-size:11px;padding:0 6px;border-radius:4px;background:var(--sunk);color:var(--muted)}
+.tag{font-size:13px;padding:0 6px;border-radius:4px;background:var(--sunk);color:var(--muted)}
 .tag.bad{background:var(--bad-soft);color:var(--bad)}
 .tag.ok{background:var(--accent-soft);color:var(--accent)}
 .tag.warn{background:var(--warn-soft);color:var(--warn)}
 
 .gridwrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .ghead{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center}
-.ghead h2{font-size:20px}
-.ghead .meta{color:var(--muted);font-size:13px}
+.ghead h2{font-size:24px}
+.ghead .meta{color:var(--muted);font-size:16px}
 .tools{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
-.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-weight:500;font-size:13px}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 12px;font-weight:500;font-size:16px}
 .btn:hover{border-color:var(--accent)}
 .btn.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
 .btn.danger{color:var(--bad)}
 .btn:disabled{opacity:.5;cursor:default}
-.pickbar{display:flex;gap:10px;align-items:center;background:var(--copper-soft);border:1px solid var(--copper);border-radius:8px;padding:6px 10px;font-size:13px;flex-wrap:wrap}
+.pickbar{display:flex;gap:10px;align-items:center;background:var(--copper-soft);border:1px solid var(--copper);border-radius:8px;padding:6px 10px;font-size:16px;flex-wrap:wrap}
 .scroll{overflow-x:auto}
-.tt{display:grid;grid-template-columns:72px repeat(3,minmax(76px,1fr)) 30px repeat(8,minmax(76px,1fr));grid-auto-rows:auto;min-width:1000px;position:relative}
-.tt .h{font-size:11px;color:var(--muted);text-align:center;padding:4px 2px;border-bottom:1px solid var(--line)}
-.tt .h b{display:block;font-family:var(--f-display);font-size:13px;color:var(--ink)}
+.tt{display:grid;grid-template-columns:84px repeat(3,minmax(96px,1fr)) 32px repeat(8,minmax(96px,1fr));grid-auto-rows:auto;min-width:1220px;position:relative}
+.tt .h{font-size:13px;color:var(--muted);text-align:center;padding:4px 2px;border-bottom:1px solid var(--line)}
+.tt .h b{display:block;font-family:var(--f-display);font-size:16px;color:var(--ink)}
 .tt .h.eve b{color:var(--muted)}
-.tt .day{font-family:var(--f-display);font-weight:600;display:flex;align-items:center;padding-left:4px;border-bottom:1px solid var(--line);min-height:78px}
-.tt .cell{border-bottom:1px solid var(--line);border-left:1px solid var(--line);min-height:78px;background:transparent;border-top:0;border-right:0;padding:0;position:relative}
+.tt .day{font-family:var(--f-display);font-weight:600;display:flex;align-items:center;padding-left:4px;border-bottom:1px solid var(--line);min-height:96px}
+.tt .cell{border-bottom:1px solid var(--line);border-left:1px solid var(--line);min-height:96px;background:transparent;border-top:0;border-right:0;padding:0;position:relative}
 .tt .cell.eve{background:repeating-linear-gradient(135deg,transparent 0 6px,var(--sunk) 6px 7px)}
 .tt .cell.ok{background:var(--accent-soft);box-shadow:inset 0 0 0 1.5px var(--accent);cursor:copy}
 .tt .cell.no{cursor:not-allowed}
 .tt .cell.drop{background:var(--accent);opacity:.5}
-.tt .lunch{grid-column:5;z-index:0;border-left:1px solid var(--line);background:var(--sunk);writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);letter-spacing:.1em}
-.blk{margin:3px;border-radius:7px;padding:5px 8px;background:oklch(var(--blk-l) var(--blk-c) var(--h));color:var(--blk-ink);border:1px solid oklch(60% 0.08 var(--h) / .5);font-size:12px;line-height:1.3;text-align:left;display:flex;flex-direction:column;gap:1px;overflow:hidden;z-index:1;position:relative}
-.blk .n{font-weight:600;font-size:12.5px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.blk .s{opacity:.8;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tt .lunch{grid-column:5;z-index:0;border-left:1px solid var(--line);background:var(--sunk);writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--muted);letter-spacing:.1em}
+.blk{margin:3px;border-radius:7px;padding:5px 8px;background:oklch(var(--blk-l) var(--blk-c) var(--h));color:var(--blk-ink);border:1px solid oklch(60% 0.08 var(--h) / .5);font-size:14px;line-height:1.3;text-align:left;display:flex;flex-direction:column;gap:1px;overflow:hidden;z-index:1;position:relative}
+.blk .n{font-weight:600;font-size:15px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.blk .s{opacity:.8;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .blk.bad{border:2px solid var(--bad)}
 .blk.sel{outline:2px solid var(--copper);outline-offset:1px}
-.blk .lk{font-size:10.5px;opacity:.75;order:9}
-.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.blk .lk{font-size:13px;opacity:.75;order:9}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
 
 /* check + data */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
-.stat b{display:block;font-family:var(--f-display);font-size:26px;line-height:1.1}
-.stat span{font-size:12px;color:var(--muted)}
+.stat b{display:block;font-family:var(--f-display);font-size:31px;line-height:1.1}
+.stat span{font-size:14px;color:var(--muted)}
 .stat.bad b{color:var(--bad)}
 .stat.good b{color:var(--accent)}
 .sec{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.sec h3{font-size:16px}
+.sec h3{font-size:19px}
 .tbl{overflow-x:auto}
-table{border-collapse:collapse;width:100%;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:16px}
 th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
-th{font-size:12px;color:var(--muted);font-weight:500;white-space:nowrap}
+th{font-size:14px;color:var(--muted);font-weight:500;white-space:nowrap}
 td input,td select{padding:4px 6px}
 .subtabs{display:flex;gap:6px;flex-wrap:wrap}
-.subtabs button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px}
+.subtabs button{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:16px}
 .subtabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .muted{color:var(--muted)}
@@ -140,13 +140,16 @@ td input,td select{padding:4px 6px}
 /* modal + toast */
 .scrim{position:fixed;inset:0;background:rgba(10,20,15,.45);display:grid;place-items:center;z-index:50;padding:16px}
 .modal{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);width:min(520px,100%);max-height:88vh;overflow:auto;padding:18px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--line)}
-.modal h3{font-size:18px}
-.kv{display:grid;grid-template-columns:90px 1fr;gap:6px 10px;font-size:13px}
+.modal h3{font-size:22px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:6px 10px;font-size:16px}
 .kv dt{color:var(--muted)}
 .kv dd{margin:0}
-.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px 10px;font-size:13px}
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:9px;z-index:60;font-size:13px;max-width:calc(100% - 32px)}
+.checks{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:4px 10px;font-size:16px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:9px;z-index:60;font-size:16px;max-width:calc(100% - 32px)}
 @media (prefers-reduced-motion:no-preference){.blk,.cell{transition:background .12s}}
+.fsz{display:flex;gap:2px;align-items:center;margin-left:auto}
+.fsz button{border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:0 8px;line-height:1.6;color:var(--muted)}
+.fsz button[aria-pressed="true"]{border-color:var(--accent);color:var(--accent);font-weight:600}
 </style>
 
 <script src="claude-shim.js"></script>
@@ -159,7 +162,7 @@ td input,td select{padding:4px 6px}
   </div>
   <nav class="tabs" id="tabs"></nav>
 </header>
-<div class="status"><span class="dot" id="dot"></span><span id="statusText">กำลังเชื่อมต่อข้อมูลกลาง…</span></div>
+<div class="status"><span class="dot" id="dot"></span><span id="statusText">กำลังเชื่อมต่อข้อมูลกลาง…</span><span class="fsz" id="fsz" role="group" aria-label="ขนาดตัวอักษร"><span>ขนาดตัวอักษร</span><button data-act="fsz" data-v="1" style="font-size:14px">ก</button><button data-act="fsz" data-v="1.15" style="font-size:17px">ก</button><button data-act="fsz" data-v="1.3" style="font-size:20px">ก</button></span></div>
 <main id="main"><div class="empty">กำลังโหลดข้อมูล…</div></main>
 <div id="modalRoot"></div>
 <div id="toastRoot"></div>
@@ -177,6 +180,8 @@ const S = {
   pick: null, focus: null, modal: null, dataTab: 'courses', pendingRender: false, busy: false, filter: '', exists: {master:false, plan:false}
 };
 try { const saved = JSON.parse(localStorage.getItem('tt-ui') || '{}'); Object.assign(S.sel, saved.sel || {}); if (saved.mode) S.mode = saved.mode; if (saved.tab) S.tab = saved.tab; } catch(e) {}
+let FSZ = '1'; try { FSZ = localStorage.getItem('tt-fsz') || '1'; } catch(e) {}
+function applyFsz(){ document.body.style.zoom = FSZ; document.querySelectorAll('#fsz button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.v === FSZ))); }
 function saveUi(){ try { localStorage.setItem('tt-ui', JSON.stringify({sel:S.sel, mode:S.mode, tab:S.tab})); } catch(e) {} }
 
 /* ---------- helpers ---------- */
@@ -555,7 +560,7 @@ function renderData(){
     const q = S.filter.trim();
     let list = sortBy(courses(), ([cid,c]) => ((M().groups[c.groups[0]]||{}).order ?? 999) + ' ' + subj(c).code);
     if (q) list = list.filter(([cid,c]) => (subj(c).name + subj(c).code + gNames(c) + tName(c.teacher)).includes(q));
-    body = `<div class="row"><input type="text" id="flt" data-act="filter" placeholder="ค้นหาวิชา กลุ่ม หรือครู" value="${esc(S.filter)}" style="max-width:320px"><button class="btn pri" data-act="newCourse">เพิ่มรายวิชาที่เปิดสอน</button><span class="muted" style="font-size:12px">รูปแบบคาบ เช่น 4 = ต่อเนื่อง 4 คาบ, 2+3 = แยก 2 ครั้ง</span></div>
+    body = `<div class="row"><input type="text" id="flt" data-act="filter" placeholder="ค้นหาวิชา กลุ่ม หรือครู" value="${esc(S.filter)}" style="max-width:320px"><button class="btn pri" data-act="newCourse">เพิ่มรายวิชาที่เปิดสอน</button><span class="muted" style="font-size:14px">รูปแบบคาบ เช่น 4 = ต่อเนื่อง 4 คาบ, 2+3 = แยก 2 ครั้ง</span></div>
     <div class="tbl"><table><thead><tr><th>รหัส / ชื่อวิชา</th><th>กลุ่มเรียน</th><th>ครูผู้สอน</th><th>ชม./สัปดาห์</th><th>รูปแบบคาบ</th><th>ห้อง</th><th>ใช้ห้องแผนก</th><th></th></tr></thead><tbody>
     ${list.map(([cid,c]) => `<tr><td><span class="num muted">${esc(subj(c).code)}</span><br>${esc(subj(c).name)}${c.note?`<br><span class="tag">${esc(c.note)}</span>`:''}</td>
       <td><button class="btn" data-act="editGroups" data-c="${cid}" style="text-align:left">${esc(gNames(c))}</button></td>
@@ -573,7 +578,7 @@ function renderData(){
     body = `<div class="row"><button class="btn pri" data-act="add" data-k="groups">เพิ่มกลุ่มเรียน</button></div><div class="tbl"><table><thead><tr><th>ชื่อกลุ่ม</th><th>ระดับ</th><th>แผนก</th><th>ลำดับ</th><th>รายวิชา</th><th></th></tr></thead><tbody>
     ${sortedGroups().map(([id,g]) => `<tr><td><input type="text" value="${esc(g.name)}" data-act="mset" data-path="groups.${id}.name"></td><td><select data-act="mset" data-path="groups.${id}.level">${['ปวช.','ปวส.','นอกแผนก'].map(l => `<option ${g.level===l?'selected':''}>${l}</option>`).join('')}</select></td><td><input type="text" value="${esc(g.dept||'')}" data-act="mset" data-path="groups.${id}.dept"></td><td><input type="number" value="${g.order??''}" data-num="1" data-act="mset" data-path="groups.${id}.order" style="width:70px"></td><td class="num">${courses().filter(([c,x]) => (x.groups||[]).includes(id)).length}</td><td><button class="btn danger" data-act="del" data-k="groups" data-id="${id}">ลบ</button></td></tr>`).join('')}</tbody></table></div>`;
   } else if (S.dataTab === 'rooms') {
-    body = `<div class="row"><button class="btn pri" data-act="add" data-k="rooms">เพิ่มห้อง</button><span class="muted" style="font-size:12px">ห้องที่ประเภทเป็น “${DEPT_KIND}” ระบบจะเลือกให้อัตโนมัติ · “ใช้ร่วมได้” = ไม่ตรวจชน เช่น สนาม</span></div><div class="tbl"><table><thead><tr><th>ชื่อห้อง</th><th>ประเภท</th><th>ใช้ร่วมได้</th><th></th></tr></thead><tbody>
+    body = `<div class="row"><button class="btn pri" data-act="add" data-k="rooms">เพิ่มห้อง</button><span class="muted" style="font-size:14px">ห้องที่ประเภทเป็น “${DEPT_KIND}” ระบบจะเลือกให้อัตโนมัติ · “ใช้ร่วมได้” = ไม่ตรวจชน เช่น สนาม</span></div><div class="tbl"><table><thead><tr><th>ชื่อห้อง</th><th>ประเภท</th><th>ใช้ร่วมได้</th><th></th></tr></thead><tbody>
     ${sortBy(live(M().rooms), ([i,r]) => r.name).map(([id,r]) => `<tr><td><input type="text" value="${esc(r.name)}" data-act="mset" data-path="rooms.${id}.name"></td><td><input type="text" value="${esc(r.kind||'')}" data-act="mset" data-path="rooms.${id}.kind"></td><td><select data-act="mset" data-bool="1" data-path="rooms.${id}.shared"><option value="0" ${!r.shared?'selected':''}>ไม่</option><option value="1" ${r.shared?'selected':''}>ใช่</option></select></td><td><button class="btn danger" data-act="del" data-k="rooms" data-id="${id}">ลบ</button></td></tr>`).join('')}</tbody></table></div>`;
   } else {
     body = `<div class="row"><button class="btn pri" data-act="add" data-k="subjects">เพิ่มรหัสวิชา</button></div><div class="tbl"><table><thead><tr><th>รหัสวิชา</th><th>ชื่อวิชา</th><th>ท</th><th>ป</th><th>นก</th></tr></thead><tbody>
@@ -584,14 +589,14 @@ function renderData(){
 
 function renderSettings(){
   const st = settings(); const sg = st.signers || {};
-  const f = (label, path, val, type='text') => `<label style="display:grid;gap:4px;font-size:13px"><span class="muted">${label}</span><input type="${type}" value="${esc(val??'')}" data-act="mset" ${type==='number'?'data-num="1"':''} data-path="${path}"></label>`;
+  const f = (label, path, val, type='text') => `<label style="display:grid;gap:4px;font-size:16px"><span class="muted">${label}</span><input type="${type}" value="${esc(val??'')}" data-act="mset" ${type==='number'?'data-num="1"':''} data-path="${path}"></label>`;
   $('#main').innerHTML = `
   <div class="sec"><h3>ส่งออกเป็น Excel</h3><p class="muted" style="margin:0">สร้างไฟล์ .xlsx รูปแบบเดียวกับไฟล์เดิม: ตารางเรียนทุกกลุ่ม ตารางสอนครูทุกคน และตารางการใช้ห้อง พร้อมช่องลงนาม</p>
     <div class="row"><button class="btn pri" data-act="export" ${S.exporting?'disabled':''}>${S.exporting ? 'กำลังสร้างไฟล์…' : 'ดาวน์โหลดไฟล์ Excel'}</button></div></div>
   <div class="sec"><h3>ข้อมูลทั่วไป</h3><div class="cards">
     ${f('ชื่อสถานศึกษา','settings.school',st.school)}${f('แผนก','settings.dept',st.dept)}${f('ภาคเรียน / ปีการศึกษา','settings.term',st.term)}
     ${f('จัดอัตโนมัติไม่เกินคาบที่','settings.autoMaxPeriod',st.autoMaxPeriod,'number')}${f('ชั่วโมงเรียนต่อวันที่เหมาะสม','settings.maxPerDay',st.maxPerDay,'number')}
-    <label style="display:grid;gap:4px;font-size:13px"><span class="muted">จัดอัตโนมัติให้คร่อมพักกลางวันได้</span><select data-act="mset" data-bool="1" data-path="settings.autoLunchCross"><option value="1" ${st.autoLunchCross!==false?'selected':''}>ได้ (ใช้เมื่อจำเป็น)</option><option value="0" ${st.autoLunchCross===false?'selected':''}>ไม่ได้</option></select></label>
+    <label style="display:grid;gap:4px;font-size:16px"><span class="muted">จัดอัตโนมัติให้คร่อมพักกลางวันได้</span><select data-act="mset" data-bool="1" data-path="settings.autoLunchCross"><option value="1" ${st.autoLunchCross!==false?'selected':''}>ได้ (ใช้เมื่อจำเป็น)</option><option value="0" ${st.autoLunchCross===false?'selected':''}>ไม่ได้</option></select></label>
   </div></div>
   <div class="sec"><h3>ผู้ลงนามท้ายตาราง</h3><div class="cards">
     ${f('หัวหน้าแผนก','settings.signers.head',sg.head)}${f('ตำแหน่ง','settings.signers.headRole',sg.headRole)}
@@ -614,7 +619,7 @@ function renderModal(){
     html = `<h3>${esc(sj.name)}</h3>
       <dl class="kv"><dt>รหัสวิชา</dt><dd class="num">${esc(sj.code)} (ท ${sj.t} ป ${sj.p} นก ${sj.c})</dd><dt>กลุ่มเรียน</dt><dd>${esc(gNames(c))}</dd><dt>ครูผู้สอน</dt><dd>${esc((M().teachers[c.teacher]||{}).name || 'ยังไม่ระบุ')}</dd><dt>เวลา</dt><dd>${DAYS[s.day]} คาบ ${s.start}–${s.start+s.len-1} <span class="muted num">(${TIMES[s.start].split('–')[0]}–${TIMES[s.start+s.len-1].split('–')[1]})</span></dd></dl>
       ${errs.length ? `<div class="pickbar" style="background:var(--bad-soft);border-color:var(--bad)">${errs.map(esc).join('<br>')}</div>` : ''}
-      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">ห้องเรียน</span><select data-act="slotRoom" data-id="${m.id}"><option value="">— ไม่ระบุห้อง —</option>${roomsL.map(([id,x]) => { const free = roomFree(id, s.day, s.start, s.len, m.id, occ); return `<option value="${id}" ${id===s.room?'selected':''} ${!free && id!==s.room ? 'disabled' : ''}>${esc(x.name)}${!free?' (ไม่ว่าง)':''}</option>`; }).join('')}</select></label>
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:16px">ห้องเรียน</span><select data-act="slotRoom" data-id="${m.id}"><option value="">— ไม่ระบุห้อง —</option>${roomsL.map(([id,x]) => { const free = roomFree(id, s.day, s.start, s.len, m.id, occ); return `<option value="${id}" ${id===s.room?'selected':''} ${!free && id!==s.room ? 'disabled' : ''}>${esc(x.name)}${!free?' (ไม่ว่าง)':''}</option>`; }).join('')}</select></label>
       <div class="row"><button class="btn pri" data-act="startMove" data-id="${m.id}" ${s.locked?'disabled':''}>ย้ายเวลา</button><button class="btn" data-act="toggleLock" data-id="${m.id}">${s.locked?'ปลดล็อก':'ล็อกไว้'}</button><button class="btn danger" data-act="delSlot" data-id="${m.id}" ${s.locked?'disabled':''}>นำออกจากตาราง</button><button class="btn" data-act="close" style="margin-left:auto">ปิด</button></div>`;
   } else if (m.type === 'groups') {
     const c = M().courses[m.id];
@@ -625,9 +630,9 @@ function renderModal(){
     const g = m.group || (sortedGroups()[0]||[])[0];
     const sList = sortBy(live(M().subjects), ([i,s]) => s.code);
     html = `<h3>เพิ่มรายวิชาที่เปิดสอน</h3>
-      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">กลุ่มเรียน</span><select id="ncGroup">${sortedGroups().map(([id,x]) => `<option value="${id}" ${id===g?'selected':''}>${esc(x.name)}</option>`).join('')}</select></label>
-      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">รายวิชา (เลือกจากรหัสวิชา หรือเพิ่มรหัสใหม่ในแท็บรหัสวิชา)</span><select id="ncSubj">${sList.map(([id,s]) => `<option value="${id}">${esc(s.code+' '+s.name)} (${s.t+s.p} ชม.)</option>`).join('')}</select></label>
-      <label style="display:grid;gap:4px"><span class="muted" style="font-size:13px">ครูผู้สอน</span><select id="ncTeacher"><option value="">— ยังไม่ระบุ —</option>${sortedTeachers().map(([id,t]) => `<option value="${id}">${esc(t.short)}</option>`).join('')}</select></label>
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:16px">กลุ่มเรียน</span><select id="ncGroup">${sortedGroups().map(([id,x]) => `<option value="${id}" ${id===g?'selected':''}>${esc(x.name)}</option>`).join('')}</select></label>
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:16px">รายวิชา (เลือกจากรหัสวิชา หรือเพิ่มรหัสใหม่ในแท็บรหัสวิชา)</span><select id="ncSubj">${sList.map(([id,s]) => `<option value="${id}">${esc(s.code+' '+s.name)} (${s.t+s.p} ชม.)</option>`).join('')}</select></label>
+      <label style="display:grid;gap:4px"><span class="muted" style="font-size:16px">ครูผู้สอน</span><select id="ncTeacher"><option value="">— ยังไม่ระบุ —</option>${sortedTeachers().map(([id,t]) => `<option value="${id}">${esc(t.short)}</option>`).join('')}</select></label>
       <div class="row"><button class="btn pri" data-act="createCourse">เพิ่ม</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
   } else if (m.type === 'confirm') {
     html = `<h3>${esc(m.title)}</h3><p style="margin:0">${esc(m.text)}</p><div class="row"><button class="btn pri" style="background:var(--bad);border-color:var(--bad)" data-act="confirmYes">${esc(m.yes)}</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
@@ -643,6 +648,7 @@ function clearSlots(filterFn){ const patch = {}; for (const [id,s] of slots()) i
 document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]'); if (!el) return;
   const a = el.dataset.act;
+  if (a === 'fsz') { FSZ = el.dataset.v; try { localStorage.setItem('tt-fsz', FSZ); } catch(_) {} applyFsz(); return; }
   if (a === 'tab') { S.tab = el.dataset.v; S.pick = null; saveUi(); render(); }
   else if (a === 'mode') { S.mode = el.dataset.v; S.pick = null; saveUi(); render(); }
   else if (a === 'pick') { const cid = el.dataset.c, len = +el.dataset.len; S.pick = (S.pick && S.pick.course === cid && S.pick.len === len) ? null : {course: cid, len}; render(); }
@@ -834,6 +840,7 @@ async function exportXlsx(){
 }
 
 /* ---------- boot ---------- */
+applyFsz();
 render();
 (async () => {
   for (let i = 0; i < 30 && !(window.claude && window.claude.use); i++) await new Promise(r => setTimeout(r, 100));
