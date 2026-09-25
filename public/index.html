@@ -75,6 +75,7 @@ select,input[type=text],input[type=number]{background:var(--surface);border:1px 
 @media (max-width:900px){.clist{max-height:none}}
 .crow{border:1px solid var(--line);border-radius:9px;padding:8px 10px;display:grid;gap:4px;border-left:4px solid oklch(62% 0.12 var(--h))}
 .crow.done{opacity:.6}
+.linkbtn{border:0;background:none;padding:0 2px;color:var(--accent);font-size:13px;font-weight:500;text-decoration:underline;text-underline-offset:2px}
 .crow .nm{font-weight:600;font-size:16px;line-height:1.35}
 .crow .sub{font-size:14px;color:var(--muted)}
 .chips{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
@@ -409,9 +410,9 @@ function allConflicts(){
 /* ---------- render ---------- */
 function render(){
   const ae = document.activeElement;
-  if ((S.tab === 'data' || S.tab === 'settings') && ae && ae.matches && ae.matches('#main input, #main select') ) { S.pendingRender = true; return; }
+  if (ae && ae.matches && (ae.matches('#modalRoot input:not([type=checkbox])') || ((S.tab === 'data' || S.tab === 'settings' || S.tab === 'subjects') && ae.matches('#main input, #main select')))) { S.pendingRender = true; return; }
   S.pendingRender = false;
-  $('#tabs').innerHTML = [['board','จัดตาราง'],['check','ตรวจสอบ'],['data','ข้อมูลรายวิชา'],['settings','ตั้งค่า / ส่งออก']]
+  $('#tabs').innerHTML = [['board','จัดตาราง'],['check','ตรวจสอบ'],['subjects','ชื่อวิชา'],['data','ข้อมูลรายวิชา'],['settings','ตั้งค่า / ส่งออก']]
     .map(([k,l]) => `<button data-act="tab" data-v="${k}" aria-pressed="${S.tab===k}">${l}</button>`).join('');
   $('#dot').className = 'dot' + (S.online ? ' on' : '');
   $('#statusText').textContent = S.online ? 'ออนไลน์ · ทุกคนที่เปิดหน้านี้เห็นการแก้ไขทันที' : (S.dbTried ? 'ออฟไลน์ · เปิดดูได้แต่การแก้ไขจะไม่ถูกบันทึก' : 'กำลังเชื่อมต่อข้อมูลกลาง…');
@@ -421,6 +422,7 @@ function render(){
   if (S.tab === 'board') renderBoard();
   else if (S.tab === 'check') renderCheck();
   else if (S.tab === 'data') renderData();
+  else if (S.tab === 'subjects') renderSubjects();
   else renderSettings();
   renderModal();
 }
@@ -507,7 +509,7 @@ function courseRow(cid, c){
   const placed = courseSlots(cid).reduce((a,[i,s]) => a + s.len, 0);
   const sub = S.mode === 'teacher' ? gNames(c) : [tName(c.teacher) || 'ยังไม่ระบุครู', c.groups.length > 1 ? 'รวม ' + gNames(c) : ''].filter(Boolean).join(' · ');
   return `<div class="crow ${rem.length?'':'done'}" style="--h:${hue(c.subject)}">
-    <div class="nm">${esc(sj.name)}</div>
+    <div class="nm">${esc(sj.name)} <button class="linkbtn" data-act="editSubj" data-s="${c.subject}" title="แก้ชื่อวิชา / รหัสวิชา">แก้ชื่อ</button></div>
     <div class="sub"><span class="num">${esc(sj.code)}</span> · ${esc(sub)}</div>
     <div class="chips"><span class="tag ${rem.length?'':'ok'} num">${placed}/${c.hours} ชม.</span>
       ${c.activity ? '<span class="tag">กิจกรรม</span>' : ''}
@@ -552,17 +554,18 @@ function renderCheck(){
 }
 
 function renderData(){
-  const tabs = [['courses','รายวิชาที่เปิดสอน'],['teachers','ครู'],['groups','กลุ่มเรียน'],['rooms','ห้องเรียน'],['subjects','รหัสวิชา']];
+  const tabs = [['courses','รายวิชาที่เปิดสอน'],['teachers','ครู'],['groups','กลุ่มเรียน'],['rooms','ห้องเรียน']];
   let body = '';
   const tOpts = sel => `<option value="">— ยังไม่ระบุ —</option>` + sortedTeachers().map(([id,t]) => `<option value="${id}" ${id===sel?'selected':''}>${esc(t.short)}</option>`).join('');
   const rOpts = sel => `<option value="">— ไม่กำหนด —</option>` + sortBy(live(M().rooms), ([i,r]) => r.name).map(([id,r]) => `<option value="${id}" ${id===sel?'selected':''}>${esc(r.name)}</option>`).join('');
+  if (S.dataTab === 'subjects') S.dataTab = 'courses';
   if (S.dataTab === 'courses') {
     const q = S.filter.trim();
     let list = sortBy(courses(), ([cid,c]) => ((M().groups[c.groups[0]]||{}).order ?? 999) + ' ' + subj(c).code);
     if (q) list = list.filter(([cid,c]) => (subj(c).name + subj(c).code + gNames(c) + tName(c.teacher)).includes(q));
     body = `<div class="row"><input type="text" id="flt" data-act="filter" placeholder="ค้นหาวิชา กลุ่ม หรือครู" value="${esc(S.filter)}" style="max-width:320px"><button class="btn pri" data-act="newCourse">เพิ่มรายวิชาที่เปิดสอน</button><span class="muted" style="font-size:14px">รูปแบบคาบ เช่น 4 = ต่อเนื่อง 4 คาบ, 2+3 = แยก 2 ครั้ง</span></div>
     <div class="tbl"><table><thead><tr><th>รหัส / ชื่อวิชา</th><th>กลุ่มเรียน</th><th>ครูผู้สอน</th><th>ชม./สัปดาห์</th><th>รูปแบบคาบ</th><th>ห้อง</th><th>ใช้ห้องแผนก</th><th></th></tr></thead><tbody>
-    ${list.map(([cid,c]) => `<tr><td><span class="num muted">${esc(subj(c).code)}</span><br>${esc(subj(c).name)}${c.note?`<br><span class="tag">${esc(c.note)}</span>`:''}</td>
+    ${list.map(([cid,c]) => `<tr><td><span class="num muted">${esc(subj(c).code)}</span><br>${esc(subj(c).name)} <button class="btn" data-act="editSubj" data-s="${c.subject}" style="padding:0 8px;font-size:14px">แก้ชื่อ</button>${c.note?`<br><span class="tag">${esc(c.note)}</span>`:''}</td>
       <td><button class="btn" data-act="editGroups" data-c="${cid}" style="text-align:left">${esc(gNames(c))}</button></td>
       <td><select data-act="mset" data-path="courses.${cid}.teacher">${tOpts(c.teacher)}</select></td>
       <td><input type="number" min="1" max="20" value="${c.hours}" data-act="mset" data-num="1" data-path="courses.${cid}.hours" style="width:64px"></td>
@@ -585,6 +588,19 @@ function renderData(){
     ${sortBy(live(M().subjects), ([i,s]) => s.code).map(([id,s]) => `<tr><td><input type="text" value="${esc(s.code)}" data-act="mset" data-path="subjects.${id}.code" style="width:110px"></td><td><input type="text" value="${esc(s.name)}" data-act="mset" data-path="subjects.${id}.name"></td>${['t','p','c'].map(k => `<td><input type="number" min="0" value="${s[k]??0}" data-num="1" data-act="mset" data-path="subjects.${id}.${k}" style="width:56px"></td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
   }
   $('#main').innerHTML = `<div class="subtabs">${tabs.map(([k,l]) => `<button data-act="dtab" data-v="${k}" aria-pressed="${S.dataTab===k}">${l}</button>`).join('')}</div><div class="sec">${body}</div>`;
+}
+
+function renderSubjects(){
+  const q = (S.sfilter || '').trim();
+  const use = {}; for (const [cid,c] of courses()) { (use[c.subject] ||= {n:0, g:new Set(), t:new Set()}); use[c.subject].n++; (c.groups||[]).forEach(g => use[c.subject].g.add(gName(g))); if (c.teacher) use[c.subject].t.add(tName(c.teacher)); }
+  let list = sortBy(live(M().subjects), ([i,x]) => x.code + x.name);
+  if (q) list = list.filter(([i,x]) => (x.code + ' ' + x.name).includes(q));
+  $('#main').innerHTML = `<div class="sec"><h3>ชื่อวิชาและรหัสวิชา</h3>
+    <p class="muted" style="margin:0">แก้ครั้งเดียว ชื่อจะเปลี่ยนในทุกตาราง (กลุ่มเรียน ครู ห้อง) และในไฟล์ Excel ที่ส่งออก</p>
+    <div class="row"><input type="text" id="sflt" data-act="sfilter" placeholder="ค้นหาชื่อหรือรหัสวิชา" value="${esc(S.sfilter || '')}" style="max-width:340px"><button class="btn pri" data-act="newSubj">เพิ่มวิชาใหม่</button><span class="muted" style="font-size:15px">${list.length} วิชา</span></div>
+    <div class="tbl"><table><thead><tr><th>รหัสวิชา</th><th>ชื่อวิชา</th><th>ท-ป-นก</th><th>กลุ่มที่เรียน</th><th>ครู</th><th></th></tr></thead><tbody>
+    ${list.map(([id,x]) => { const u = use[id]; return `<tr><td class="num">${esc(x.code)}</td><td>${esc(x.name)}</td><td class="num">${x.t||0}-${x.p||0}-${x.c||0}</td><td>${u ? esc([...u.g].join(', ')) : '<span class="muted">ยังไม่มีกลุ่มเรียน</span>'}</td><td>${u ? esc([...u.t].join(', ')) : ''}</td><td><button class="btn" data-act="editSubj" data-s="${id}">แก้ไข</button></td></tr>`; }).join('')}
+    </tbody></table></div></div>`;
 }
 
 function renderSettings(){
@@ -622,7 +638,7 @@ function renderModal(){
       <dl class="kv"><dt>รหัสวิชา</dt><dd class="num">${esc(sj.code)} (ท ${sj.t} ป ${sj.p} นก ${sj.c})</dd><dt>กลุ่มเรียน</dt><dd>${esc(gNames(c))}</dd><dt>ครูผู้สอน</dt><dd>${esc((M().teachers[c.teacher]||{}).name || 'ยังไม่ระบุ')}</dd><dt>เวลา</dt><dd>${DAYS[s.day]} คาบ ${s.start}–${s.start+s.len-1} <span class="muted num">(${TIMES[s.start].split('–')[0]}–${TIMES[s.start+s.len-1].split('–')[1]})</span></dd></dl>
       ${errs.length ? `<div class="pickbar" style="background:var(--bad-soft);border-color:var(--bad)">${errs.map(esc).join('<br>')}</div>` : ''}
       <label style="display:grid;gap:4px"><span class="muted" style="font-size:16px">ห้องเรียน</span><select data-act="slotRoom" data-id="${m.id}"><option value="">— ไม่ระบุห้อง —</option>${roomsL.map(([id,x]) => { const free = roomFree(id, s.day, s.start, s.len, m.id, occ); return `<option value="${id}" ${id===s.room?'selected':''} ${!free && id!==s.room ? 'disabled' : ''}>${esc(x.name)}${!free?' (ไม่ว่าง)':''}</option>`; }).join('')}</select></label>
-      <div class="row"><button class="btn pri" data-act="startMove" data-id="${m.id}" ${s.locked?'disabled':''}>ย้ายเวลา</button><button class="btn" data-act="toggleLock" data-id="${m.id}">${s.locked?'ปลดล็อก':'ล็อกไว้'}</button><button class="btn danger" data-act="delSlot" data-id="${m.id}" ${s.locked?'disabled':''}>นำออกจากตาราง</button><button class="btn" data-act="close" style="margin-left:auto">ปิด</button></div>`;
+      <div class="row"><button class="btn pri" data-act="startMove" data-id="${m.id}" ${s.locked?'disabled':''}>ย้ายเวลา</button><button class="btn" data-act="toggleLock" data-id="${m.id}">${s.locked?'ปลดล็อก':'ล็อกไว้'}</button><button class="btn danger" data-act="delSlot" data-id="${m.id}" ${s.locked?'disabled':''}>นำออกจากตาราง</button><button class="btn" data-act="editSubj" data-s="${c.subject}">แก้ชื่อวิชา</button><button class="btn" data-act="close" style="margin-left:auto">ปิด</button></div>`;
   } else if (m.type === 'groups') {
     const c = M().courses[m.id];
     html = `<h3>กลุ่มที่เรียนวิชานี้</h3><p class="muted" style="margin:0">${esc(subj(c).name)} · เลือกหลายกลุ่ม = เรียนรวมในคาบเดียวกัน</p>
@@ -636,6 +652,18 @@ function renderModal(){
       <label style="display:grid;gap:4px"><span class="muted" style="font-size:16px">รายวิชา (เลือกจากรหัสวิชา หรือเพิ่มรหัสใหม่ในแท็บรหัสวิชา)</span><select id="ncSubj">${sList.map(([id,s]) => `<option value="${id}">${esc(s.code+' '+s.name)} (${s.t+s.p} ชม.)</option>`).join('')}</select></label>
       <label style="display:grid;gap:4px"><span class="muted" style="font-size:16px">ครูผู้สอน</span><select id="ncTeacher"><option value="">— ยังไม่ระบุ —</option>${sortedTeachers().map(([id,t]) => `<option value="${id}">${esc(t.short)}</option>`).join('')}</select></label>
       <div class="row"><button class="btn pri" data-act="createCourse">เพิ่ม</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
+  } else if (m.type === 'subject') {
+    const sj = M().subjects[m.id] || {code:'', name:'', t:0, p:0, c:0};
+    const used = courses().filter(([cid,c]) => c.subject === m.id);
+    const gs = [...new Set(used.flatMap(([cid,c]) => c.groups || []))].map(gName);
+    const fld = (id, label, val, type='text', w='') => `<label style="display:grid;gap:4px"><span class="muted" style="font-size:15px">${label}</span><input type="${type}" id="${id}" value="${esc(val ?? '')}" ${type==='number'?'min="0" max="20"':''} ${w}></label>`;
+    html = `<h3>${m.isNew ? 'เพิ่มวิชาใหม่' : 'แก้ไขชื่อวิชา / รหัสวิชา'}</h3>
+      ${fld('sjName','ชื่อวิชา', sj.name)}
+      ${fld('sjCode','รหัสวิชา', sj.code)}
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">${fld('sjT','ทฤษฎี (ชม.)', sj.t, 'number')}${fld('sjP','ปฏิบัติ (ชม.)', sj.p, 'number')}${fld('sjC','หน่วยกิต', sj.c, 'number')}</div>
+      ${used.length ? `<p class="muted" style="margin:0;font-size:15px">มีผลกับทุกกลุ่มที่เรียนวิชานี้ (${used.length} รายการ): ${esc(gs.join(', '))}</p>
+      <label style="font-size:15px"><input type="checkbox" id="sjSyncHours" checked> ปรับชั่วโมง/สัปดาห์ของรายวิชาที่เปิดสอนให้เท่ากับ ทฤษฎี + ปฏิบัติ (ถ้ามีการเปลี่ยน)</label>` : ''}
+      <div class="row"><button class="btn pri" data-act="saveSubj" data-s="${m.id}">บันทึก</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
   } else if (m.type === 'confirm') {
     html = `<h3>${esc(m.title)}</h3><p style="margin:0">${esc(m.text)}</p><div class="row"><button class="btn pri" style="background:var(--bad);border-color:var(--bad)" data-act="confirmYes">${esc(m.yes)}</button><button class="btn" data-act="close">ยกเลิก</button></div>`;
   }
@@ -672,6 +700,24 @@ document.addEventListener('click', e => {
   else if (a === 'clearAll') confirmBox('ล้างตารางทั้งแผนก?', 'คาบทั้งหมดที่ไม่ได้ล็อกจะถูกนำออก ทุกคนที่เปิดหน้านี้จะเห็นผลทันที', 'ล้างทั้งหมด', () => clearSlots(() => true));
   else if (a === 'confirmYes') { const fn = S._confirm; S.modal = null; S._confirm = null; renderModal(); fn && fn(); }
   else if (a === 'goto') { S.tab = 'board'; S.mode = 'group'; S.sel.group = el.dataset.g; saveUi(); render(); }
+  else if (a === 'editSubj') { S.modal = {type:'subject', id: el.dataset.s}; renderModal(); setTimeout(() => { const f = $('#sjName'); if (f) f.focus(); }, 0); }
+  else if (a === 'newSubj') { S.modal = {type:'subject', id: uid('s'), isNew: true}; renderModal(); setTimeout(() => { const f = $('#sjName'); if (f) f.focus(); }, 0); }
+  else if (a === 'saveSubj') {
+    const id = el.dataset.s; const old = M().subjects[id] || {};
+    const name = $('#sjName').value.trim().replace(/\s+/g, ' '); const code = $('#sjCode').value.trim();
+    const n = x => Math.max(0, parseInt($(x).value, 10) || 0);
+    const v = {code, name, t: n('#sjT'), p: n('#sjP'), c: n('#sjC')};
+    if (!name) { toast('กรุณาใส่ชื่อวิชา'); return; }
+    const dup = live(M().subjects).find(([sid,x]) => sid !== id && code && x.code === code && x.name === name);
+    if (dup) { toast('มีวิชานี้ (รหัสและชื่อเดียวกัน) อยู่แล้ว'); return; }
+    const sync = $('#sjSyncHours') && $('#sjSyncHours').checked;
+    const h = v.t + v.p; const patch = {subjects: {[id]: v}};
+    if (sync && h > 0 && h !== (old.t || 0) + (old.p || 0)) {
+      patch.courses = {};
+      for (const [cid,c] of courses()) if (c.subject === id && c.hours !== h) patch.courses[cid] = {hours: h, pattern: defaultPattern(h)};
+    }
+    S.modal = null; write('master', patch); toast('บันทึกแล้ว');
+  }
   else if (a === 'dtab') { S.dataTab = el.dataset.v; render(); }
   else if (a === 'editGroups') { S.modal = {type:'groups', id: el.dataset.c}; renderModal(); }
   else if (a === 'saveGroups') { const gs = [...document.querySelectorAll('input[name=cg]:checked')].map(x => x.value); if (!gs.length) { toast('เลือกอย่างน้อย 1 กลุ่ม'); return; } S.modal = null; setM(['courses', el.dataset.c, 'groups'], gs); }
@@ -713,9 +759,9 @@ document.addEventListener('change', e => {
     setM(path, v);
   }
 });
-document.addEventListener('input', e => { if (e.target.dataset.act === 'filter') { S.filter = e.target.value; clearTimeout(S._ft); S._ft = setTimeout(() => { const pos = e.target.selectionStart; renderData(); const f = $('#flt'); if (f) { f.focus(); f.setSelectionRange(pos, pos); } }, 250); } });
+document.addEventListener('input', e => { if (e.target.dataset.act === 'sfilter') { S.sfilter = e.target.value; clearTimeout(S._sft); S._sft = setTimeout(() => { const pos = e.target.selectionStart; renderSubjects(); const f = $('#sflt'); if (f) { f.focus(); f.setSelectionRange(pos, pos); } }, 250); return; } if (e.target.dataset.act === 'filter') { S.filter = e.target.value; clearTimeout(S._ft); S._ft = setTimeout(() => { const pos = e.target.selectionStart; renderData(); const f = $('#flt'); if (f) { f.focus(); f.setSelectionRange(pos, pos); } }, 250); } });
 document.addEventListener('focusout', () => { setTimeout(() => { if (S.pendingRender) render(); }, 0); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (S.modal) { S.modal = null; renderModal(); } else if (S.pick) { S.pick = null; render(); } } });
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && S.modal && S.modal.type === 'subject' && e.target.matches('#modalRoot input')) { e.preventDefault(); const b = document.querySelector('[data-act="saveSubj"]'); if (b) b.click(); return; } if (e.key === 'Escape') { if (S.modal) { S.modal = null; renderModal(); } else if (S.pick) { S.pick = null; render(); } } });
 
 // drag & drop
 document.addEventListener('dragstart', e => {
