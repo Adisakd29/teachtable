@@ -593,6 +593,8 @@ function renderSettings(){
   $('#main').innerHTML = `
   <div class="sec"><h3>ส่งออกเป็น Excel</h3><p class="muted" style="margin:0">สร้างไฟล์ .xlsx รูปแบบเดียวกับไฟล์เดิม: ตารางเรียนทุกกลุ่ม ตารางสอนครูทุกคน และตารางการใช้ห้อง พร้อมช่องลงนาม</p>
     <div class="row"><button class="btn pri" data-act="export" ${S.exporting?'disabled':''}>${S.exporting ? 'กำลังสร้างไฟล์…' : 'ดาวน์โหลดไฟล์ Excel'}</button></div></div>
+  <div class="sec"><h3>สำรอง / กู้คืนข้อมูล</h3><p class="muted" style="margin:0">ดาวน์โหลดข้อมูลทั้งหมด (ครู กลุ่มเรียน ห้อง รายวิชา และตารางที่จัดแล้ว) เก็บเป็นไฟล์ .json ควรสำรองก่อนอัปเดตระบบทุกครั้ง แล้วนำไฟล์มากู้คืนได้ที่นี่</p>
+    <div class="row"><button class="btn pri" data-act="backup">ดาวน์โหลดไฟล์สำรอง</button><label class="btn" for="restoreFile" style="cursor:pointer">กู้คืนจากไฟล์สำรอง…</label><input type="file" id="restoreFile" accept=".json,application/json" hidden></div></div>
   <div class="sec"><h3>ข้อมูลทั่วไป</h3><div class="cards">
     ${f('ชื่อสถานศึกษา','settings.school',st.school)}${f('แผนก','settings.dept',st.dept)}${f('ภาคเรียน / ปีการศึกษา','settings.term',st.term)}
     ${f('จัดอัตโนมัติไม่เกินคาบที่','settings.autoMaxPeriod',st.autoMaxPeriod,'number')}${f('ชั่วโมงเรียนต่อวันที่เหมาะสม','settings.maxPerDay',st.maxPerDay,'number')}
@@ -694,9 +696,11 @@ document.addEventListener('click', e => {
     confirmBox('ยืนยันการลบ?', 'ข้อมูลนี้จะถูกลบสำหรับทุกคน', 'ลบ', () => setM([k, id], null));
   }
   else if (a === 'export') exportXlsx();
+  else if (a === 'backup') backupJson();
 });
 document.addEventListener('change', e => {
   const el = e.target;
+  if (el.id === 'restoreFile') { restoreJson(el.files && el.files[0]); el.value = ''; return; }
   if (el.dataset.act === 'entity') { S.sel[S.mode] = el.value; S.pick = null; saveUi(); render(); }
   else if (el.dataset.act === 'slotRoom') { setSlot(el.dataset.id, {room: el.value}); }
   else if (el.dataset.act === 'mset') {
@@ -730,6 +734,33 @@ document.addEventListener('drop', e => {
   S.pick = null; render();
 });
 document.addEventListener('dragend', () => { if (S.pick) { S.pick = null; render(); } });
+
+/* ---------- backup / restore ---------- */
+async function backupJson(){
+  if (!S.dl) { toast('หน้านี้ดาวน์โหลดไฟล์ไม่ได้ในมุมมองนี้'); return; }
+  const d = new Date(); const stamp = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0') + '_' + String(d.getHours()).padStart(2,'0') + String(d.getMinutes()).padStart(2,'0');
+  const data = JSON.stringify({app: 'electronics-timetable', savedAt: d.toISOString(), master: S.master, plan: S.plan});
+  try { await S.dl.save({filename: 'timetable-backup_' + stamp + '.json', data}); toast('ดาวน์โหลดไฟล์สำรองแล้ว'); }
+  catch (e) { toast(e && e.code === 'declined' ? 'ยกเลิกการดาวน์โหลด' : 'ดาวน์โหลดไม่สำเร็จ'); }
+}
+function restoreJson(file){
+  if (!file) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    let j; try { j = JSON.parse(rd.result); } catch (e) { toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของระบบ'); return; }
+    if (!j || !j.master || !j.master.courses || !j.plan) { toast('ไฟล์นี้ไม่ใช่ไฟล์สำรองของระบบ'); return; }
+    const n = live(j.plan.slots).length;
+    confirmBox('กู้คืนข้อมูลจากไฟล์สำรอง?', `ข้อมูลปัจจุบันทั้งหมดจะถูกแทนที่ด้วยไฟล์สำรอง${j.savedAt ? ' เมื่อ ' + new Date(j.savedAt).toLocaleString('th-TH') : ''} (${n} คาบที่จัดไว้)`, 'กู้คืน', async () => {
+      if (!S.db) { toast('ยังไม่ได้เชื่อมต่อข้อมูลกลาง'); return; }
+      try {
+        await S.db.doc('tt/master').set(j.master); await S.db.doc('tt/plan').set(j.plan);
+        S.exists.master = S.exists.plan = true; S.master = JSON.parse(JSON.stringify(j.master)); S.plan = JSON.parse(JSON.stringify(j.plan)); render();
+        toast('กู้คืนข้อมูลเรียบร้อย');
+      } catch (e) { toast('กู้คืนไม่สำเร็จ (' + (e && e.code || 'error') + ')'); }
+    });
+  };
+  rd.readAsText(file);
+}
 
 /* ---------- Excel export ---------- */
 function loadScript(src){ return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
@@ -830,7 +861,8 @@ async function exportXlsx(){
       signers(ws, r);
     }
     const buf = await wb.xlsx.writeBuffer();
-    const name = 'ตารางเรียนตารางสอน ' + (st.term || '').replace(/[^฀-๿0-9 ]/g,'').trim() + '.xlsx';
+    const yr = ((st.term || '').match(/\d{4}/) || [''])[0]; const tm = ((st.term || '').match(/ภาคเรียนที่\s*(\d)/) || [0, ''])[1];
+    const name = 'timetable' + (yr ? '_' + yr + (tm ? '-' + tm : '') : '') + '.xlsx';
     await S.dl.save({filename: name, data: new Blob([buf])});
     toast('ส่งไฟล์ Excel แล้ว');
   } catch (e) {

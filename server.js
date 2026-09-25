@@ -4,7 +4,10 @@ const fs = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 3000;
-const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
+// Railway ตั้ง RAILWAY_VOLUME_MOUNT_PATH ให้อัตโนมัติเมื่อผูก Volume ไว้ จึงใช้เป็นค่าเริ่มต้น
+const ON_RAILWAY = !!(process.env.RAILWAY_ENVIRONMENT || process.env.RAILWAY_PROJECT_ID);
+const DATA_DIR = process.env.DATA_DIR || process.env.RAILWAY_VOLUME_MOUNT_PATH || path.join(__dirname, 'data');
+const PERSISTENT = !ON_RAILWAY || !!process.env.RAILWAY_VOLUME_MOUNT_PATH;
 const APP_USER = process.env.APP_USER || 'admin';
 const APP_PASSWORD = process.env.APP_PASSWORD || '';
 const PUBLIC = path.join(__dirname, 'public');
@@ -93,6 +96,7 @@ http.createServer(async (req, res) => {
   }
 
   if (url.pathname === '/api/health') { res.writeHead(200); return res.end('ok'); }
+  if (url.pathname === '/api/info') { res.writeHead(200, { 'Content-Type': 'application/json' }); return res.end(JSON.stringify({ persistent: PERSISTENT, onRailway: ON_RAILWAY })); }
 
   // static files
   let f = path.normalize(path.join(PUBLIC, url.pathname === '/' ? 'index.html' : decodeURIComponent(url.pathname)));
@@ -102,4 +106,9 @@ http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': TYPES[path.extname(f)] || 'application/octet-stream', 'Cache-Control': 'no-cache' });
     res.end(buf);
   });
-}).listen(PORT, () => console.log('Timetable running on port ' + PORT + ' · data: ' + DATA_DIR));
+}).listen(PORT, () => {
+  console.log('Timetable running on port ' + PORT + ' · data: ' + DATA_DIR);
+  if (!PERSISTENT) console.warn('คำเตือน: ยังไม่ได้ผูก Volume บน Railway ข้อมูลจะหายทุกครั้งที่ deploy ใหม่ (Attach Volume แล้ว deploy อีกครั้ง)');
+  if (ON_RAILWAY && process.env.RAILWAY_VOLUME_MOUNT_PATH && process.env.DATA_DIR && !process.env.DATA_DIR.startsWith(process.env.RAILWAY_VOLUME_MOUNT_PATH))
+    console.warn('คำเตือน: DATA_DIR (' + process.env.DATA_DIR + ') ไม่ได้อยู่ใน Volume (' + process.env.RAILWAY_VOLUME_MOUNT_PATH + ')');
+});

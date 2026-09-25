@@ -36,23 +36,25 @@ git push -u origin main
 ## Deploy บน Railway
 
 1. เข้า railway.com → **New Project** → **Deploy from GitHub repo** → เลือก repo นี้
-   Railway จะตรวจเจอว่าเป็น Node.js และรัน `npm start` ให้เอง
-2. **เพิ่ม Volume** (สำคัญ ไม่อย่างนั้นข้อมูลจะหายทุกครั้งที่ deploy ใหม่)
-   คลิกขวาที่ service → **Attach Volume** → Mount path: `/data`
-3. ไปที่แท็บ **Variables** แล้วเพิ่ม
+2. **ผูก Volume (สำคัญที่สุด)** คลิกขวาที่ service → **Attach Volume** → Mount path: `/data`
+   ถ้าไม่มี Volume ข้อมูลทั้งหมดจะหายทุกครั้งที่ push โค้ดใหม่ (หน้าเว็บจะขึ้นแถบแดงเตือน)
+   ระบบตรวจพบ Volume เองอัตโนมัติ ไม่ต้องตั้ง `DATA_DIR` (ถ้าเคยตั้ง `DATA_DIR` ไว้ ต้องชี้ไปที่ `/data` เท่านั้น หรือลบตัวแปรนี้ทิ้ง)
+3. แท็บ **Variables** (ไม่บังคับ แต่แนะนำ)
    | ตัวแปร | ค่า | ความหมาย |
    |---|---|---|
-   | `DATA_DIR` | `/data` | ให้เก็บข้อมูลใน Volume |
    | `APP_PASSWORD` | รหัสผ่านที่ตั้งเอง | ล็อกทั้งเว็บด้วยรหัสผ่าน (ไม่ใส่ = ใครมีลิงก์ก็แก้ได้) |
    | `APP_USER` | เช่น `elec` | ชื่อผู้ใช้ตอนเข้าสู่ระบบ (ค่าเริ่มต้น `admin`) |
-4. แท็บ **Settings** → **Networking** → **Generate Domain** จะได้ลิงก์ `xxx.up.railway.app` ไว้แชร์ให้ครูในแผนก
+4. **Settings** → **Networking** → **Generate Domain**
+5. ตรวจว่าเก็บข้อมูลถาวรแล้ว: เปิด `https://<โดเมน>/api/info` ต้องได้ `"persistent":true`
+   และใน Deploy Logs จะเห็น `data: /data`
 
-ทุกครั้งที่ push โค้ดใหม่ขึ้น GitHub, Railway จะ deploy ให้อัตโนมัติ ข้อมูลใน Volume ยังอยู่ครบ
+## ก่อนอัปเดตโค้ดทุกครั้ง
 
-## สำรองข้อมูล
+1. เปิดแท็บ **ตั้งค่า / ส่งออก** → **ดาวน์โหลดไฟล์สำรอง** (ได้ไฟล์ `timetable-backup_วันที่.json`)
+2. push โค้ดใหม่ขึ้น GitHub แล้วรอ Railway deploy เสร็จ
+3. ถ้าข้อมูลหาย ให้กด **กู้คืนจากไฟล์สำรอง…** แล้วเลือกไฟล์ที่ดาวน์โหลดไว้
 
-ข้อมูลทั้งหมดอยู่ใน 2 ไฟล์ `tt_master.json` (ครู กลุ่ม ห้อง รายวิชา) และ `tt_plan.json` (คาบที่จัดแล้ว)
-ดาวน์โหลดได้จาก `https://<โดเมน>/api/doc/tt/master` และ `/api/doc/tt/plan`
+ไฟล์สำรองนี้ใช้ได้ทั้งเวอร์ชันบน Railway และเวอร์ชันบน claude.ai ย้ายข้อมูลข้ามกันได้
 
 ## โครงสร้าง
 

@@ -36,10 +36,22 @@
     async save({ filename, data }) {
       const blob = data instanceof Blob ? data : new Blob([data]);
       const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = filename;
-      document.body.appendChild(a); a.click(); a.remove();
-      setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+      a.style.display = 'none'; document.body.appendChild(a); a.click();
+      setTimeout(() => { a.remove(); URL.revokeObjectURL(a.href); }, 10000);
       return { status: 'saved' };
     }
   };
+  // เตือนเมื่อเซิร์ฟเวอร์ไม่มีที่เก็บข้อมูลถาวร
+  fetch('api/info').then(r => r.json()).then(info => {
+    if (info.persistent) return;
+    const show = () => {
+      const b = document.createElement('div');
+      b.setAttribute('role', 'alert');
+      b.style.cssText = 'background:#B8332F;color:#fff;padding:10px 16px;font:15px/1.5 system-ui,sans-serif;text-align:center';
+      b.textContent = 'คำเตือน: เซิร์ฟเวอร์ยังไม่ได้ผูก Volume ข้อมูลจะหายเมื่อ deploy ใหม่ ให้ Attach Volume ใน Railway และดาวน์โหลดไฟล์สำรองไว้ก่อน (แท็บ ตั้งค่า / ส่งออก)';
+      document.body.prepend(b);
+    };
+    document.body ? show() : document.addEventListener('DOMContentLoaded', show);
+  }).catch(() => {});
   window.claude = { use: async name => name === 'db' ? db : name === 'downloads' ? downloads : null };
 })();
