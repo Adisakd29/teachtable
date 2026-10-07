@@ -1,0 +1,68 @@
+{
+"slots": {
+"a01": {
+"course": "c006",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "",
+"locked": true
+},
+"a02": {
+"course": "c012",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "",
+"locked": true
+},
+"a03": {
+"course": "c019",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "",
+"locked": true
+},
+"a04": {
+"course": "c027",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "",
+"locked": true
+},
+"a05": {
+"course": "c035",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "",
+"locked": true
+},
+"a06": {
+"course": "c042",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "rcomp",
+"locked": true
+},
+"a07": {
+"course": "c055",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "rfield",
+"locked": true
+},
+"a08": {
+"course": "c061",
+"day": 2,
+"start": 6,
+"len": 2,
+"room": "",
+"locked": true
+}
+}
+}
