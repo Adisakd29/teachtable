@@ -1,0 +1,2429 @@
+{
+"settings": {
+"school": "วิทยาลัยเทคนิคสมุทรปราการ",
+"dept": "แผนกวิชาอิเล็กทรอนิกส์",
+"term": "ภาคเรียนที่ 2 ปีการศึกษา 2569",
+"autoMaxPeriod": 8,
+"maxPerDay": 7,
+"signers": {
+"head": "นายอภัยภัทร  พัชราภา",
+"headRole": "หัวหน้าแผนกวิชาอิเล็กทรอนิกส์",
+"curr": "นายเสฐียรพงษ์  เอียดคง",
+"currRole": "หัวหน้างานพัฒนาหลักสูตรการเรียนการสอน",
+"vice": "ว่าที่ร้อยตรี วัฒนชัย  บุญสุข",
+"viceRole": "รองผู้อำนวยการฝ่ายวิชาการ",
+"dir": "นายสุรินทร์ บุญสนอง",
+"dirRole": "ผู้อำนวยการวิทยาลัยเทคนิคสมุทรปราการ"
+}
+},
+"teachers": {
+"t01": {
+"name": "นายอภัยภัทร พัชราภา",
+"short": "อ.อภัยภัทร",
+"degree": "ค.อ.บ. วิศวกรรมอิเล็กทรอนิกส์",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t02": {
+"name": "นายจิรวัฒน์ นนตระอุดร",
+"short": "อ.จิรวัฒน์",
+"degree": "วท.ม. การศึกษาวิทยาศาสตร์(คอมพิวเตอร์)",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t03": {
+"name": "นางศศินา ศักดิ์สุปราง",
+"short": "อ.ศศินา",
+"degree": "ค.อ.ม. อิเล็กทรอนิกส์",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t04": {
+"name": "นายอรุณ กำเหนิดนนท์",
+"short": "อ.อรุณ",
+"degree": "อส.บ. เทคโนโลยีการวัดคุมทางอุตสาหกรรม",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t05": {
+"name": "นายนิติ เกื้อกูลวงศ์ชัย",
+"short": "อ.นิติ",
+"degree": "ค.อ.ม.วิศวกรรมไฟฟ้าสื่อสาร",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t06": {
+"name": "นายวินัย จบเจนไพร",
+"short": "อ.วินัย",
+"degree": "วศ.ม. วิศวกรรมไฟฟ้า (ไฟฟ้าสื่อสาร)",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t07": {
+"name": "นางสาวณิชกานต์ ชาลีเครือ",
+"short": "อ.ณิชกานต์",
+"degree": "ค.อ.บ. วิศวกรรมอิเล็กทรอนิกส์",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t08": {
+"name": "นายอดิศักดิ์ เดชผดุง",
+"short": "อ.อดิศักดิ์",
+"degree": "ค.อ.บ. วิศวกรรมอิเล็กทรอนิกส์",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t09": {
+"name": "นายกรวิทย์ ภานิล",
+"short": "อ.กรวิทย์",
+"degree": "ค.อ.บ.วิศวรรมอิเล็กทรอนิกส์",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t10": {
+"name": "นายวัฒนชัย บุญสุข",
+"short": "อ.วัฒนชัย",
+"degree": "ค.อ.ม. อิเล็กทรอนิกส์",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t11": {
+"name": "ปัญญา",
+"short": "อ.ปัญญา",
+"degree": "",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t12": {
+"name": "สุปาณี",
+"short": "อ.สุปาณี",
+"degree": "",
+"dept": "อิเล็กทรอนิกส์"
+},
+"t13": {
+"name": "พีระพงษ์",
+"short": "อ.พีระพงษ์",
+"degree": "",
+"dept": "อิเล็กทรอนิกส์"
+}
+},
+"groups": {
+"g01": {
+"name": "ชอ.1/1 ก.1",
+"level": "ปวช.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 0
+},
+"g02": {
+"name": "ชอ.1/1 ก.2",
+"level": "ปวช.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 1
+},
+"g03": {
+"name": "ชอ.2/1",
+"level": "ปวช.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 2
+},
+"g04": {
+"name": "ชอ.3/1 ก.1",
+"level": "ปวช.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 3
+},
+"g05": {
+"name": "ชอ.3/1 ก.2",
+"level": "ปวช.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 4
+},
+"g06": {
+"name": "ชอ.3/2",
+"level": "ปวช.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 5
+},
+"g07": {
+"name": "สชอ.1/1 ก.1",
+"level": "ปวส.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 6
+},
+"g08": {
+"name": "สชอ.1/1 ม.6",
+"level": "ปวส.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 7
+},
+"g09": {
+"name": "สชอ.1/2 ทวิ",
+"level": "ปวส.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 8
+},
+"g10": {
+"name": "สชอ.2/1 ก.1",
+"level": "ปวส.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 9
+},
+"g11": {
+"name": "สชอ.2/1 ก.2",
+"level": "ปวส.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 10
+},
+"g12": {
+"name": "สชอ.2/1 ม.6",
+"level": "ปวส.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 11
+},
+"g13": {
+"name": "สชอ.2/2 ทวิ",
+"level": "ปวส.",
+"dept": "อิเล็กทรอนิกส์",
+"order": 12
+},
+"x01": {
+"name": "ชก.2/1",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 101
+},
+"x02": {
+"name": "ชก.2/2 ทวิ",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 102
+},
+"x03": {
+"name": "ชย.1/4 ทวิ",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 103
+},
+"x04": {
+"name": "ชบ.3",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 104
+},
+"x05": {
+"name": "ชก.2/1 ก.1",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 105
+},
+"x06": {
+"name": "ชย.1/1 ก.2",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 106
+},
+"x07": {
+"name": "ชย.1/2 ก.1",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 107
+},
+"x08": {
+"name": "ชก.3/1",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 108
+},
+"x09": {
+"name": "ชก.2/1 ก.2",
+"level": "นอกแผนก",
+"dept": "แผนกอื่น",
+"order": 109
+}
+},
+"rooms": {
+"r511": {
+"name": "511",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r513": {
+"name": "513",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r514": {
+"name": "514",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r521": {
+"name": "521",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r522": {
+"name": "522",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r523": {
+"name": "523",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r524": {
+"name": "524",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r525": {
+"name": "525",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r531": {
+"name": "531",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r532": {
+"name": "532",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r533": {
+"name": "533",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r534": {
+"name": "534",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r535": {
+"name": "535",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r541": {
+"name": "541",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r542": {
+"name": "542",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r543": {
+"name": "543",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r544": {
+"name": "544",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"r545": {
+"name": "545",
+"kind": "แผนกอิเล็กทรอนิกส์"
+},
+"rfield": {
+"name": "สนาม",
+"kind": "พื้นที่ส่วนกลาง",
+"shared": true
+},
+"rcomp": {
+"name": "สถานประกอบการ",
+"kind": "ภายนอก",
+"shared": true
+}
+},
+"subjects": {
+"s001": {
+"code": "20000-1203",
+"name": "การฟังและการพูดภาษาอังกฤษ",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s002": {
+"code": "20000-1302",
+"name": "วิทยาศสตร์เพื่ออาชีพอุตสาหกรรม",
+"t": 1,
+"p": 2,
+"c": 2
+},
+"s003": {
+"code": "20100-1003",
+"name": "งานฝึกฝีมือ",
+"t": 0,
+"p": 6,
+"c": 2
+},
+"s004": {
+"code": "20100-1004",
+"name": "งานเชื่อมและโลหะแผ่นเบื่องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s005": {
+"code": "20105-2003",
+"name": "วงจรพัลส์และดิจิทัล",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s006": {
+"code": "20105-2008",
+"name": "วงจรไอซีและการประยุกต์ใช้งาน",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s007": {
+"code": "20105-2020",
+"name": "งานบริการอิเล็กทรอรนิกส์",
+"t": 0,
+"p": 4,
+"c": 2
+},
+"s008": {
+"code": "20105-2029",
+"name": "การใช้งานแอปพลิเคชั่นปัญญาประดิษฐ์",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s009": {
+"code": "20000-2002",
+"name": "กิจกรรมลูกเสือวิสามัญ 2",
+"t": 0,
+"p": 2,
+"c": 0
+},
+"s010": {
+"code": "20000-1102",
+"name": "ภาษาไทยเพื่ออาชีพ",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s011": {
+"code": "20000-1221",
+"name": "ภาษาอังกฤษเพื่อเตรียมความพร้อมสำหรับการทำงาน",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s012": {
+"code": "20000-1502",
+"name": "ประวัติศาสตร์ชาติไทย",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s013": {
+"code": "20001-1001",
+"name": "สุขภาพความปลอดภัยและสิ่งแวดล้อม",
+"t": 1,
+"p": 2,
+"c": 2
+},
+"s014": {
+"code": "20001-1002",
+"name": "การพัฒนาอย่างยั่งยืน",
+"t": 1,
+"p": 2,
+"c": 2
+},
+"s015": {
+"code": "20105-2005",
+"name": "ไมโครคอนโทรลเลอร์",
+"t": 1,
+"p": 4,
+"c": 3
+},
+"s016": {
+"code": "20105-2007",
+"name": "การเขียนโปรแกรมคอมพิวเตอร์",
+"t": 1,
+"p": 4,
+"c": 3
+},
+"s017": {
+"code": "20105-2014",
+"name": "เครือข่ายคอมพิวเตอร์",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s018": {
+"code": "20105-2018",
+"name": "สายส่งและสายอากาศ",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s019": {
+"code": "20105-2019",
+"name": "เครื่องรับวิทยุ",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s020": {
+"code": "20000-2004",
+"name": "กิจกรรมองค์การวิชาชีพ 1",
+"t": 0,
+"p": 2,
+"c": 0
+},
+"s021": {
+"code": "20000-1202",
+"name": "ภาษาอังกฤษโครงงานบูรณาการวิชาชีพ",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s022": {
+"code": "20001-1003",
+"name": "ธุรกิจเบื้องต้น",
+"t": 1,
+"p": 2,
+"c": 2
+},
+"s023": {
+"code": "20001-1005",
+"name": "การใช้เทคโนโลยีดิจิทัลเพื่ออาชีพ",
+"t": 2,
+"p": 2,
+"c": 3
+},
+"s024": {
+"code": "20100-1007",
+"name": "งานนิวเมติกส์และไฮดรอลิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s025": {
+"code": "20105-2017",
+"name": "เครื่องส่งวิทยุ",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s026": {
+"code": "20105-2016",
+"name": "โทรทัศน์ระบบดิจิทัล",
+"t": 1,
+"p": 4,
+"c": 3
+},
+"s027": {
+"code": "20105-2032",
+"name": "โครงงานด้านอิเล็กทรอนิกส์",
+"t": 0,
+"p": 4,
+"c": 4
+},
+"s028": {
+"code": "20105-2027",
+"name": "ระบบโทรศัพท์เคลื่อนที่",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s029": {
+"code": "20000-2005",
+"name": "กิจกรรมองค์การวิชาชีพ 2",
+"t": 0,
+"p": 2,
+"c": 0
+},
+"s030": {
+"code": "30000-1101",
+"name": "ทักษะภาษาไทยเพื่อการสื่อสารในงานอาชีพ",
+"t": 1,
+"p": 2,
+"c": 2
+},
+"s031": {
+"code": "30000-1302",
+"name": "วิทยาศาสตร์งานอาชีพไฟฟ้า อิเล็กทรอนิกส์และการสื่อสาร",
+"t": 2,
+"p": 2,
+"c": 3
+},
+"s032": {
+"code": "30000-1601",
+"name": "การพัฒนาสุขภาพ",
+"t": 2,
+"p": 0,
+"c": 2
+},
+"s033": {
+"code": "30100-1020",
+"name": "การควบคุมนิวเมติกส์และไฮดรอลิกส์",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s034": {
+"code": "30105-2002",
+"name": "สมองกลฝังตัว",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s035": {
+"code": "30105-2003",
+"name": "โปรแกรมเมเบิลลอจิกคอนโทรล",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s036": {
+"code": "30105-2007",
+"name": "หุ่นยนต์อุตสาหกรรม",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s037": {
+"code": "30105-2008",
+"name": "การพัฒนาระบบควบคุมอัตโนมัติในงานอุตสาหกรรม",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s038": {
+"code": "30000-2002",
+"name": "กิจกรรมองค์การวิชาชีพ 1",
+"t": 0,
+"p": 2,
+"c": 0
+},
+"s039": {
+"code": "30105-0001",
+"name": "เขียนแบบอิเล็กทรอนิกส์ด้วยคอมพิวเตอร์",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s040": {
+"code": "30105-0002",
+"name": "งานพื้นฐานวงจรไฟฟ้าและการวัด",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s041": {
+"code": "30001-1002",
+"name": "องค์การและการบริหารงานคุณภาพ",
+"t": 3,
+"p": 0,
+"c": 3
+},
+"s042": {
+"code": "30105-2004",
+"name": "เทคนิคการอินเตอร์เฟช",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s043": {
+"code": "30105-2005",
+"name": "อิเล็กทรอนิกส์อุตสาหกรรม",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s044": {
+"code": "30000-2005",
+"name": "กิจกรรมในสถานประกอบการ 1",
+"t": 0,
+"p": 2,
+"c": 0
+},
+"s045": {
+"code": "30000-1202",
+"name": "การเขียนและการนำเสนอโครงงานภาษาอังกฤษ",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s046": {
+"code": "30000-1203",
+"name": "ภาษาอังกฤษสำหรับเทคโนโลยีอุตสาหกรรม",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s047": {
+"code": "30001-1001",
+"name": "การเป็นผู้ประกอบการ",
+"t": 2,
+"p": 2,
+"c": 3
+},
+"s048": {
+"code": "30001-1003",
+"name": "การประยุกต์ใช้เทคโนโลยีดิจิทัลในอาชีพ",
+"t": 2,
+"p": 2,
+"c": 3
+},
+"s049": {
+"code": "30100-1003",
+"name": "กฎหมาบในงานอาชีพอุตสาหกรรมพลังงาน ไฟฟ้า และอิเล็กทรอนิกส์",
+"t": 1,
+"p": 0,
+"c": 1
+},
+"s050": {
+"code": "30105-2013",
+"name": "ระบบฐานข้อมูลสำหรับโรงงานอัจฉริยะ",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s051": {
+"code": "30105-2018",
+"name": "ระบบเครือข่ายคอมพิวเตอร์",
+"t": 2,
+"p": 3,
+"c": 3
+},
+"s052": {
+"code": "30105-2032",
+"name": "โครงงานด้านเทคโนโลยีอิเล็กทรอนิกส์",
+"t": 0,
+"p": 4,
+"c": 4
+},
+"s053": {
+"code": "30105-2012",
+"name": "อินเตอร์เน็ตของสรรพสิ่ง",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s054": {
+"code": "30000-2003",
+"name": "กิจกรรมองค์การวิชาชีพ 2",
+"t": 0,
+"p": 2,
+"c": 0
+},
+"s055": {
+"code": "30000-1203",
+"name": "ภาษาอังกฤษเทคโนโลยีอุตสาหกรรม",
+"t": 0,
+"p": 2,
+"c": 1
+},
+"s056": {
+"code": "30000-1503",
+"name": "หลักปรัชญาของเศรษฐกิจพอเพียงเพื่อการดำเนินชีวิต",
+"t": 1,
+"p": 0,
+"c": 1
+},
+"s057": {
+"code": "30100-2301",
+"name": "กฎหมายในงานอาชีพอุตสาหกรรมพลังงาน ไฟฟ้า และอิเล็กทรอนิกส์",
+"t": 1,
+"p": 0,
+"c": 1
+},
+"s058": {
+"code": "30105-2020",
+"name": "โครงงานด้านเทคโนโลยีอิเล็กทรอนิกส์",
+"t": 0,
+"p": 4,
+"c": 4
+},
+"s059": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s060": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s061": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s062": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s063": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s064": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s065": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s066": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+},
+"s067": {
+"code": "20100-1006",
+"name": "งานไฟฟ้าและอิเล็กทรอนิกส์เบื้องต้น",
+"t": 1,
+"p": 3,
+"c": 2
+}
+},
+"groupSubjects": {
+"g01": [
+"s001",
+"s002",
+"s003",
+"s004",
+"s005",
+"s006",
+"s007",
+"s008",
+"s009"
+],
+"g02": [
+"s001",
+"s002",
+"s003",
+"s004",
+"s005",
+"s006",
+"s007",
+"s008",
+"s009"
+],
+"g03": [
+"s010",
+"s011",
+"s012",
+"s013",
+"s014",
+"s015",
+"s016",
+"s017",
+"s018",
+"s019",
+"s020"
+],
+"g04": [
+"s021",
+"s022",
+"s023",
+"s024",
+"s025",
+"s026",
+"s027",
+"s028",
+"s029"
+],
+"g05": [
+"s021",
+"s022",
+"s023",
+"s024",
+"s025",
+"s026",
+"s027",
+"s028",
+"s029"
+],
+"g06": [
+"s021",
+"s022",
+"s023",
+"s024",
+"s025",
+"s026",
+"s027",
+"s028",
+"s029"
+],
+"g07": [
+"s030",
+"s031",
+"s032",
+"s033",
+"s034",
+"s035",
+"s036",
+"s037",
+"s038"
+],
+"g08": [
+"s030",
+"s031",
+"s032",
+"s033",
+"s034",
+"s035",
+"s036",
+"s037",
+"s038",
+"s039",
+"s040"
+],
+"g09": [
+"s041",
+"s034",
+"s042",
+"s043",
+"s036",
+"s037",
+"s044"
+],
+"g10": [
+"s045",
+"s046",
+"s047",
+"s041",
+"s048",
+"s049",
+"s050",
+"s051",
+"s052",
+"s053",
+"s054"
+],
+"g11": [
+"s045",
+"s046",
+"s047",
+"s041",
+"s048",
+"s049",
+"s050",
+"s051",
+"s052",
+"s053",
+"s054"
+],
+"g12": [
+"s045",
+"s046",
+"s047",
+"s041",
+"s048",
+"s049",
+"s050",
+"s051",
+"s052",
+"s053",
+"s054"
+],
+"g13": [
+"s045",
+"s055",
+"s031",
+"s056",
+"s047",
+"s041",
+"s048",
+"s057",
+"s033",
+"s058",
+"s054"
+],
+"x01": [
+"s059"
+],
+"x02": [
+"s059"
+],
+"x03": [
+"s060"
+],
+"x04": [
+"s060"
+],
+"x05": [
+"s061"
+],
+"x06": [
+"s062",
+"s067"
+],
+"x07": [
+"s063",
+"s064"
+],
+"x08": [
+"s065"
+],
+"x09": [
+"s066"
+]
+},
+"courses": {
+"c001": {
+"subject": "s037",
+"groups": [
+"g07",
+"g08"
+],
+"teacher": "t01",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": "เรียนรวม"
+},
+"c002": {
+"subject": "s037",
+"groups": [
+"g09"
+],
+"teacher": "t01",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c003": {
+"subject": "s041",
+"groups": [
+"g10",
+"g11",
+"g12"
+],
+"teacher": "t01",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "dept",
+"note": "เรียนรวม"
+},
+"c004": {
+"subject": "s041",
+"groups": [
+"g13"
+],
+"teacher": "t01",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c005": {
+"subject": "s059",
+"groups": [
+"x01",
+"x02"
+],
+"teacher": "t01",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c006": {
+"subject": "s054",
+"groups": [
+"g10",
+"g11",
+"g12"
+],
+"teacher": "t01",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": "เรียนรวม",
+"activity": true
+},
+"c007": {
+"subject": "s041",
+"groups": [
+"g09"
+],
+"teacher": "t02",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c008": {
+"subject": "s050",
+"groups": [
+"g10"
+],
+"teacher": "t02",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c009": {
+"subject": "s050",
+"groups": [
+"g11",
+"g12"
+],
+"teacher": "t02",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c010": {
+"subject": "s051",
+"groups": [
+"g10"
+],
+"teacher": "t02",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c011": {
+"subject": "s051",
+"groups": [
+"g11",
+"g12"
+],
+"teacher": "t02",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c012": {
+"subject": "s054",
+"groups": [
+"g13"
+],
+"teacher": "t02",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": "",
+"activity": true
+},
+"c013": {
+"subject": "s005",
+"groups": [
+"g01"
+],
+"teacher": "t03",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c014": {
+"subject": "s005",
+"groups": [
+"g02"
+],
+"teacher": "t03",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c015": {
+"subject": "s026",
+"groups": [
+"g04"
+],
+"teacher": "t03",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c016": {
+"subject": "s026",
+"groups": [
+"g05"
+],
+"teacher": "t03",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c017": {
+"subject": "s026",
+"groups": [
+"g06"
+],
+"teacher": "t03",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c018": {
+"subject": "s060",
+"groups": [
+"x03",
+"x04"
+],
+"teacher": "t03",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c019": {
+"subject": "s029",
+"groups": [
+"g04",
+"g05"
+],
+"teacher": "t03",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": "เรียนรวม",
+"activity": true
+},
+"c020": {
+"subject": "s006",
+"groups": [
+"g01"
+],
+"teacher": "t04",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c021": {
+"subject": "s006",
+"groups": [
+"g02"
+],
+"teacher": "t04",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c022": {
+"subject": "s007",
+"groups": [
+"g01"
+],
+"teacher": "t04",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c023": {
+"subject": "s007",
+"groups": [
+"g02"
+],
+"teacher": "t04",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c024": {
+"subject": "s061",
+"groups": [
+"x05"
+],
+"teacher": "t04",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c025": {
+"subject": "s062",
+"groups": [
+"x06"
+],
+"teacher": "t04",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c026": {
+"subject": "s063",
+"groups": [
+"x07"
+],
+"teacher": "t04",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c027": {
+"subject": "s020",
+"groups": [
+"g03"
+],
+"teacher": "t04",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": "",
+"activity": true
+},
+"c028": {
+"subject": "s018",
+"groups": [
+"g03"
+],
+"teacher": "t05",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c029": {
+"subject": "s019",
+"groups": [
+"g03"
+],
+"teacher": "t05",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c030": {
+"subject": "s025",
+"groups": [
+"g04"
+],
+"teacher": "t05",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c031": {
+"subject": "s025",
+"groups": [
+"g05"
+],
+"teacher": "t05",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c032": {
+"subject": "s025",
+"groups": [
+"g06"
+],
+"teacher": "t05",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c033": {
+"subject": "s027",
+"groups": [
+"g06"
+],
+"teacher": "t05",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c034": {
+"subject": "s064",
+"groups": [
+"x07"
+],
+"teacher": "t05",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c035": {
+"subject": "s029",
+"groups": [
+"g06"
+],
+"teacher": "t05",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": "",
+"activity": true
+},
+"c036": {
+"subject": "s034",
+"groups": [
+"g07",
+"g08"
+],
+"teacher": "t06",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": "เรียนรวม"
+},
+"c037": {
+"subject": "s034",
+"groups": [
+"g09"
+],
+"teacher": "t06",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c038": {
+"subject": "s043",
+"groups": [
+"g09"
+],
+"teacher": "t06",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c039": {
+"subject": "s053",
+"groups": [
+"g10"
+],
+"teacher": "t06",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c040": {
+"subject": "s053",
+"groups": [
+"g11",
+"g12"
+],
+"teacher": "t06",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c041": {
+"subject": "s052",
+"groups": [
+"g10",
+"g11",
+"g12"
+],
+"teacher": "t06",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": "เรียนรวม"
+},
+"c042": {
+"subject": "s044",
+"groups": [
+"g09"
+],
+"teacher": "t06",
+"hours": 2,
+"pattern": "2",
+"room": "rcomp",
+"roomMode": "dept",
+"note": "",
+"activity": true
+},
+"c043": {
+"subject": "s008",
+"groups": [
+"g01"
+],
+"teacher": "t07",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c044": {
+"subject": "s008",
+"groups": [
+"g02"
+],
+"teacher": "t07",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c045": {
+"subject": "s015",
+"groups": [
+"g03"
+],
+"teacher": "t07",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c046": {
+"subject": "s028",
+"groups": [
+"g04"
+],
+"teacher": "t07",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c047": {
+"subject": "s028",
+"groups": [
+"g05"
+],
+"teacher": "t07",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c048": {
+"subject": "s028",
+"groups": [
+"g06"
+],
+"teacher": "t07",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c049": {
+"subject": "s065",
+"groups": [
+"x08"
+],
+"teacher": "t07",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c050": {
+"subject": "s016",
+"groups": [
+"g03"
+],
+"teacher": "t08",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c051": {
+"subject": "s017",
+"groups": [
+"g03"
+],
+"teacher": "t08",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c052": {
+"subject": "s027",
+"groups": [
+"g04",
+"g05"
+],
+"teacher": "t08",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": "เรียนรวม"
+},
+"c053": {
+"subject": "s066",
+"groups": [
+"x09"
+],
+"teacher": "t08",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c054": {
+"subject": "s067",
+"groups": [
+"x06"
+],
+"teacher": "t08",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c055": {
+"subject": "s009",
+"groups": [
+"g01",
+"g02"
+],
+"teacher": "t08",
+"hours": 2,
+"pattern": "2",
+"room": "rfield",
+"roomMode": "dept",
+"note": "เรียนรวม",
+"activity": true
+},
+"c056": {
+"subject": "s035",
+"groups": [
+"g07",
+"g08"
+],
+"teacher": "t09",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": "เรียนรวม"
+},
+"c057": {
+"subject": "s036",
+"groups": [
+"g07",
+"g08"
+],
+"teacher": "t09",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": "เรียนรวม"
+},
+"c058": {
+"subject": "s042",
+"groups": [
+"g09"
+],
+"teacher": "t09",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c059": {
+"subject": "s036",
+"groups": [
+"g09"
+],
+"teacher": "t09",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c060": {
+"subject": "s058",
+"groups": [
+"g13"
+],
+"teacher": "t09",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c061": {
+"subject": "s038",
+"groups": [
+"g07",
+"g08"
+],
+"teacher": "t09",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": "เรียนรวม",
+"activity": true
+},
+"c062": {
+"subject": "s001",
+"groups": [
+"g01"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c063": {
+"subject": "s002",
+"groups": [
+"g01"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c064": {
+"subject": "s003",
+"groups": [
+"g01"
+],
+"teacher": "",
+"hours": 6,
+"pattern": "3+3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c065": {
+"subject": "s004",
+"groups": [
+"g01"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c066": {
+"subject": "s001",
+"groups": [
+"g02"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c067": {
+"subject": "s002",
+"groups": [
+"g02"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c068": {
+"subject": "s003",
+"groups": [
+"g02"
+],
+"teacher": "",
+"hours": 6,
+"pattern": "3+3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c069": {
+"subject": "s004",
+"groups": [
+"g02"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c070": {
+"subject": "s010",
+"groups": [
+"g03"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c071": {
+"subject": "s011",
+"groups": [
+"g03"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c072": {
+"subject": "s012",
+"groups": [
+"g03"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c073": {
+"subject": "s013",
+"groups": [
+"g03"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c074": {
+"subject": "s014",
+"groups": [
+"g03"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c075": {
+"subject": "s021",
+"groups": [
+"g04"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c076": {
+"subject": "s022",
+"groups": [
+"g04"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c077": {
+"subject": "s023",
+"groups": [
+"g04"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c078": {
+"subject": "s024",
+"groups": [
+"g04"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c079": {
+"subject": "s021",
+"groups": [
+"g05"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c080": {
+"subject": "s022",
+"groups": [
+"g05"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c081": {
+"subject": "s023",
+"groups": [
+"g05"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c082": {
+"subject": "s024",
+"groups": [
+"g05"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c083": {
+"subject": "s021",
+"groups": [
+"g06"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c084": {
+"subject": "s022",
+"groups": [
+"g06"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c085": {
+"subject": "s023",
+"groups": [
+"g06"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c086": {
+"subject": "s024",
+"groups": [
+"g06"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c087": {
+"subject": "s030",
+"groups": [
+"g07"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c088": {
+"subject": "s031",
+"groups": [
+"g07"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c089": {
+"subject": "s032",
+"groups": [
+"g07"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c090": {
+"subject": "s033",
+"groups": [
+"g07"
+],
+"teacher": "",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c091": {
+"subject": "s030",
+"groups": [
+"g08"
+],
+"teacher": "",
+"hours": 3,
+"pattern": "3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c092": {
+"subject": "s031",
+"groups": [
+"g08"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c093": {
+"subject": "s032",
+"groups": [
+"g08"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c094": {
+"subject": "s033",
+"groups": [
+"g08"
+],
+"teacher": "",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c095": {
+"subject": "s039",
+"groups": [
+"g08"
+],
+"teacher": "",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c096": {
+"subject": "s040",
+"groups": [
+"g08"
+],
+"teacher": "",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "dept",
+"note": ""
+},
+"c097": {
+"subject": "s045",
+"groups": [
+"g10"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c098": {
+"subject": "s046",
+"groups": [
+"g10"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c099": {
+"subject": "s047",
+"groups": [
+"g10"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c100": {
+"subject": "s048",
+"groups": [
+"g10"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c101": {
+"subject": "s049",
+"groups": [
+"g10"
+],
+"teacher": "",
+"hours": 1,
+"pattern": "1",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c102": {
+"subject": "s045",
+"groups": [
+"g11"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c103": {
+"subject": "s046",
+"groups": [
+"g11"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c104": {
+"subject": "s047",
+"groups": [
+"g11"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c105": {
+"subject": "s048",
+"groups": [
+"g11"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c106": {
+"subject": "s049",
+"groups": [
+"g11"
+],
+"teacher": "",
+"hours": 1,
+"pattern": "1",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c107": {
+"subject": "s045",
+"groups": [
+"g12"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c108": {
+"subject": "s046",
+"groups": [
+"g12"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c109": {
+"subject": "s047",
+"groups": [
+"g12"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c110": {
+"subject": "s048",
+"groups": [
+"g12"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c111": {
+"subject": "s049",
+"groups": [
+"g12"
+],
+"teacher": "",
+"hours": 1,
+"pattern": "1",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c112": {
+"subject": "s045",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c113": {
+"subject": "s055",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 2,
+"pattern": "2",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c114": {
+"subject": "s031",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c115": {
+"subject": "s056",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 1,
+"pattern": "1",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c116": {
+"subject": "s047",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c117": {
+"subject": "s048",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 4,
+"pattern": "4",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c118": {
+"subject": "s057",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 1,
+"pattern": "1",
+"room": "",
+"roomMode": "none",
+"note": ""
+},
+"c119": {
+"subject": "s033",
+"groups": [
+"g13"
+],
+"teacher": "",
+"hours": 5,
+"pattern": "2+3",
+"room": "",
+"roomMode": "none",
+"note": ""
+}
+}
+}
